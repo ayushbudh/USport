@@ -1,7 +1,7 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import PublicNavbar from '../publicnavbar/publicnavbar';
+import Navbar from '../navbar/navbar';
 import Typography from '@mui/material/Typography';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
@@ -13,13 +13,13 @@ const Landing = () => {
   
     return (
       <>
-        <PublicNavbar/>
+        <Navbar/>
         <Box sx={{ m: 5}}>
         <Grid container spacing={2} 
                 direction="row"
                 justifyContent="center"
                 alignItems="center">
-            <Grid item xs={12} sx={{marginBottom: 5}} textAlign="center">
+            <Grid item xs={10} sx={{marginBottom: 5}} textAlign="center">
                 <Carousel showThumbs={false} showStatus={false} autoPlay={true} interval={5000} infiniteLoop={true}>
                     <div>
                         <img src="https://i.imgur.com/1F5SSk9.png" alt="Green sports field"/>

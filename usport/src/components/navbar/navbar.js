@@ -5,8 +5,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-const PublicNavbar = () => {
+const Navbar = () => {
+
+  const [auth, setAuth] = React.useState(false);  
 
   return (
     <AppBar position="static" color="transparent"
@@ -32,12 +36,20 @@ const PublicNavbar = () => {
           >
             USport
           </Typography>
-          <Button variant="contained" color="secondary">
-              Get Started
-          </Button>
+            {auth ? 
+              <>
+                <NotificationsIcon sx={{ display: { md: 'flex' }, mr: 1, fontSize: 30, color: '#FF9F1C' }} />
+                <AccountCircleIcon sx={{ display: { md: 'flex' }, mr: 1, fontSize: 30, color: '#FF9F1C' }} />
+              </>:
+              <>
+                <Button variant="contained" color="secondary">
+                    Get Started
+                </Button>
+              </>
+            }
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
-export default PublicNavbar;
+export default Navbar;
