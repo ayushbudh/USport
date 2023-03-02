@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+usport/node_modules
+usport/.pnp
+usport/.pnp.js
+
+# testing
+usport/coverage
+
+# production
+usport/build
+
+# misc
+usport/.DS_Store
+usport/.env.local
+usport/.env.development.local
+usport/.env.test.local
+usport/.env.production.local
+
+usport/npm-debug.log*
+usport/yarn-debug.log*
+usport/yarn-error.log*
