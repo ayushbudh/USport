@@ -2,11 +2,18 @@ import './App.css';
 import Landing from './components/landing/landing';
 import Signin from './components/authentication/signin';
 import Signup from './components/authentication/signup';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Landing/>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

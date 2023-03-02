@@ -143,7 +143,7 @@ const Signin = () => {
                     justifyContent: 'center',
                     }}>
                     <Typography  sx={{mr: 1}} variant="body2">Don't have an account? </Typography>
-                    <Link href="#" variant="body2">
+                    <Link href="/signup" variant="body2">
                         {" Sign Up"}
                     </Link>
                 </Box>

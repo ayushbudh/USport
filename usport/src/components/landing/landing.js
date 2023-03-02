@@ -13,7 +13,7 @@ const Landing = () => {
   
     return (
       <>
-        <Navbar/>
+        <Navbar authenticated={false}/>
         <Box sx={{ m: 5}}>
         <Grid container spacing={2} 
                 direction="row"
