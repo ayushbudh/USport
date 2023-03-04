@@ -68,12 +68,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: .5em;
+    padding-top: 10em;
     gap: 3em;
 }
 #top h1
 {
-    padding-top: 3em;
+    padding-top: 5em;
     padding-bottom: 0%;
     padding-left: 25%;
 }
@@ -97,7 +97,16 @@
 #profile .flex .info {
     padding: 0.5em;
 }
+.table {
+    display: flex;
+    justify-content: center;
+}
 
+#team .indB {
+    display: flex;
+    padding-top: .5em;
+    width: 20em;
+}
 .text-dark {
     color: var(--color-dark);
 }

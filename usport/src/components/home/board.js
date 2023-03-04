@@ -1,11 +1,20 @@
 import React from "react";
-import Profiles from "./profiles";
+import Lead from "./listPeople";
+import './style.css';
+import Top from "./Top"
+import { Leaderboard, Leaderboard2 } from "./database";
 
-export default function Board({Leaderboard})
+
+export default function Board()
 {
     return (
         <div className="board">
-            <h1 className="leaderboard">Team</h1>
-            <Profiles Leaderboard ={Leaderboard}></Profiles>
+            <Top></Top>
+            <h1 className="leaderboard">Leaderboard</h1>
+            <div className="table">
+            <Lead Leaderboard={Leaderboard}></Lead>
+            <Lead Leaderboard={Leaderboard2}></Lead>
+            </div>
+            
         </div>)
 }

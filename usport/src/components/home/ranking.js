@@ -6,8 +6,7 @@ import Box from '@mui/material/Box';
 const Ranking = () => {
     return(
         <Box id="main">
-            <Board Leaderboard ={Leaderboard}></Board>
-            <Board Leaderboard={Leaderboard2}></Board>
+            <Board></Board>
         </Box>
     );
 }
