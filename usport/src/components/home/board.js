@@ -9,6 +9,7 @@ export default function Board()
 {
     return (
         <div className="board">
+            <h1 className="rank">Ranking</h1>
             <Top></Top>
             <h1 className="leaderboard">Leaderboard</h1>
             <div className="table">

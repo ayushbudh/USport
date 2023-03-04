@@ -28,7 +28,6 @@
 .board .duration {
     display: flex;
     justify-content: center;
-    gap: 1em;
 }
 
 .board .duration>button {
@@ -44,58 +43,29 @@
     color: var(--color-light);
 }
 
+.board .rank
+{
+    padding-top: 4.4em;
+    font-weight: bolder;
+}
 .active {
     background-color: var(--color-dark);
     color: var(--color-light);
 }
 
-#profile {
-    /* display: flex; */
-
-    margin-top: 1em;
-}
-
-#profile .flex {
-    display: flex;
-    justify-content: space-between;
-    gap: 6em;
-    text-align: left;
-    /* margin-bottom: 2em; */
-    margin-left: 2.5em;
-}
 #top .topThree
 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 10em;
+    padding-top: 3em;
     gap: 3em;
-}
-#top h1
-{
-    padding-top: 5em;
-    padding-bottom: 0%;
-    padding-left: 25%;
 }
 
 .topThree
 {
-    padding-bottom: 0%;
-    align-content:end;
-}
-
-#profile .flex .item {
-    display: flex;
-    align-items: center;
-}
-
-#profile .flex img {
-    width: 25%;
-    border-radius: 50%;
-}
-
-#profile .flex .info {
-    padding: 0.5em;
+    padding-bottom: 10%;
+    padding-left: 2em;
 }
 .table {
     display: flex;
