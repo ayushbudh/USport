@@ -17,7 +17,7 @@ import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 const Connect = () => {
     return(
-        <Grid container p={4}>
+        <Grid container p={4} pb={10}>
             <Grid item xs={12} mb={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <Typography sx={{ fontWeight: 'bolder'}} variant="h4">Connect</Typography>
             </Grid>
