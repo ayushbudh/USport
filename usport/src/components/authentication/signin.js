@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
     palette: {
@@ -21,6 +22,12 @@ const theme = createTheme({
   });
 
 const Signin = () => {
+
+  const navigate = useNavigate();
+  const handleSignin = () => {
+    navigate('/home');
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -122,6 +129,7 @@ const Signin = () => {
                 fullWidth
                 color="primary"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={handleSignin}
               >
                 Sign in
               </Button>
