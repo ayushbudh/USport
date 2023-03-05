@@ -14,7 +14,7 @@ const Notification = () => {
     return(
         <>
             <Navbar authenticated={true}/>
-            <Grid container mt={12}>
+            <Grid container mt={8} mb={4}>
                 <Grid item  xs={6}>
                     <Typography sx={{textAlign: 'center'}} variant="h3">Notifications</Typography>
                 </Grid>
