@@ -19,27 +19,13 @@ export default function Lead({Leaderboard})
 }
 
 function CheckboxListSecondary(somedata) {
-  const [checked, setChecked] = React.useState([1]);
-
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
-
   return (
     <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
     {somedata.map((n) => {
-        const labelId = `checkbox-list-secondary-label-${n}`;
         return (
-          <ListItem>
+          <ListItem
+          key={n.id}
+          >
             <ListItemButton> 
               <ListItemAvatar>
                 <Avatar
