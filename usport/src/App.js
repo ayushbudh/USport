@@ -1,9 +1,10 @@
 import './App.css';
+import MyProfile from './components/MyProfile';
 
 function App() {
   return (
     <div className="App">
-      {/* Add your components here */}
+      <MyProfile></MyProfile>
     </div>
   );
 }
