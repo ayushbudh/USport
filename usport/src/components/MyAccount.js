@@ -36,7 +36,6 @@ const MyAccount = () => {
     const handleClick = () =>
     {
         console.log("Clciked");
-        return <Link to="/Myprofile"></Link>
     };
 
     return(
