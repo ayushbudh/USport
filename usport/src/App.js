@@ -1,4 +1,5 @@
 import './App.css';
+import MyProfile from './components/MyProfile';
 import Home from './components/home/home'; 
 import Landing from './components/landing/landing';
 import Signin from './components/authentication/signin';
@@ -18,6 +19,7 @@ function App() {
           <Route path="/notification" element={<Notification />} />
           <Route path="/home" element={<Home/>} />
           <Route path="/chat" element={<Chat/>} />
+          <Route path="/profile" element={<MyProfile/>} />
         </Routes>
       </Router>
     </div>
