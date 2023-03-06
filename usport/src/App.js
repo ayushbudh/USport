@@ -1,10 +1,11 @@
 import './App.css';
-import MyProfile from './components/MyProfile';
+import MyAccount from './components/MyAccount';
 
 function App() {
   return (
     <div className="App">
-      <MyProfile></MyProfile>
+
+      <MyAccount></MyAccount>
     </div>
   );
 }
