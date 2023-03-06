@@ -7,6 +7,7 @@ import Signup from './components/authentication/signup';
 import Notification from './components/notification/notification';
 import Chat from './components/chat/chat';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CreateGame from './components/creategame/creategame';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/creategame" element={<CreateGame/>} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/home" element={<Home/>} />
           <Route path="/chat" element={<Chat/>} />
