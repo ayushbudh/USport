@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
-
-
 *>*
 {
     font-family: "Raleway";
@@ -8,17 +6,16 @@
 }
 .MyProfile
 {
-    padding-top: 1em;
     text-align: center;
     justify-content: center;
     align-items: center;
+    padding-top: 2em;
 }
 
 .pHeader
 {
     font-family: "Raleway";
     font-weight: 1000;
-    padding-top: 5em;
     text-align: center;
     
 }
@@ -31,7 +28,6 @@
 .pfp
 {
     padding-top: 3em;
-    /* border-bottom: 75em; */
     justify-content: center;
     align-items: center;
     display: flex;

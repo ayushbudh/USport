@@ -10,8 +10,9 @@ import { FixedSizeList } from 'react-window';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-
+import { useNavigate } from "react-router-dom";
 const Play = () => {
+    const navigate = useNavigate();
     return(
         <Grid container p={4}>
             <Grid item xs={12} mb={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -51,6 +52,7 @@ const Play = () => {
                         itemSize={80}
                         itemCount={2}
                         overscanCount={5}
+                        itemData={navigate}
                     >
                         {renderUpComingGames}
                     </FixedSizeList>
@@ -61,11 +63,16 @@ const Play = () => {
 }
 
 const renderUpComingGames = (props) => {
-    const { index, style } = props;
-  
+    const { index, style, data } = props;
+    const handleListItemOnClick = () => {
+        // TODO: Find an alternative
+        // Use to navigate to new route
+        data("/creategame");
+    }
+
     return (
       <ListItem style={style} key={index} component="div" disablePadding>
-        <ListItemButton>
+        <ListItemButton onClick={handleListItemOnClick}>
           <ListItemText  primary={`Green Park`} secondary={`Address: 33 Gilmer Street SE Atlanta, GA 30303 `}/>
         </ListItemButton>
       </ListItem>

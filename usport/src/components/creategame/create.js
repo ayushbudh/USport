@@ -38,7 +38,7 @@ const Create = ({setCurrentPage}) => {
     };
 
     return (
-        <Grid container p={4}>
+        <Grid container pl={4} pr={4} pb={4} pt={3}>
             <Grid item xs={8} lg={7} xl={7} md={7} mb={4} sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                 <IconButton aria-label="Back button Icon" onClick={handleBackButtonClick}>
                         <Avatar src={'https://i.imgur.com/f6Uve0Z.png'} />
@@ -46,7 +46,7 @@ const Create = ({setCurrentPage}) => {
                 <Typography sx={{ fontWeight: 'bolder', textAlign: 'center'}} variant="h4">Create Game</Typography>
             </Grid>
             <Grid item xs={12} sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                <Grid item xs={4} p={3}>
+                <Grid item xs={5} lg={4} p={1}>
                     <Typography variant="h4">Green Park</Typography>
                     <Typography variant="h6" sx={{display: 'flex'}}><LocationOnIcon sx={{fontSize: 25}}/>33 Gilmer Street SE, Atlanta, GA, 30303</Typography>
                 </Grid> 

@@ -9,7 +9,7 @@ const CreateStatus = () =>{
     return(
         <Box p={5}>
             <Typography sx={{ fontWeight: 'bolder', textAlign: 'center'}} variant="h4">Status</Typography>
-            <Box mt={30} ml={20} mr={20} p={3} sx={{ display:'flex', flexDirection: 'column', alignItems: 'center',
+            <Box mt={5} ml={20} mr={20} p={3} sx={{ display:'flex', flexDirection: 'column', alignItems: 'center',
                 boxShadow: '0px 2px 18px rgba(0, 0, 0, 0.1);'}}>
                 {status ?
                     <>
