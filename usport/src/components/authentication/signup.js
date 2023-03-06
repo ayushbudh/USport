@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
     palette: {
@@ -31,6 +32,11 @@ const Signup = () => {
       lastName: data.get('lastName')
     });
   };
+
+  const navigate = useNavigate();
+  const handleSignup = () => {
+    navigate('/home');
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -129,6 +135,7 @@ const Signup = () => {
                 fullWidth
                 color="primary"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={handleSignup}
               >
                 Sign Up
               </Button>
