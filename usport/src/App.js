@@ -1,5 +1,5 @@
 import './App.css';
-import MyProfile from './components/MyProfile';
+import MyProfile from './components/profile/MyProfile';
 import Home from './components/home/home'; 
 import Landing from './components/landing/landing';
 import Signin from './components/authentication/signin';
