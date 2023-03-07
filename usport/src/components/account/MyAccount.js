@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Navbar from "../navbar/navbar";
 
 const theme = createTheme({
     palette: {
@@ -34,9 +35,11 @@ const MyAccount = () => {
     };
 
     return(
+        <>
+        <Navbar authenticated={true}/>
         <div className="MyProfile">
-        <Grid container component="main" sx={{ height: '90vh' }}>
-            <Grid container justifyContent="center" spacing={2} mt={8}>
+        <Grid container component="main" sx={{ height: '30vh' }}>
+            <Grid container justifyContent="center" spacing={2}>
                 <Typography component="h1" variant="h5"
             sx={{fontSize: 45,
               fontWeight: 600}}>
@@ -95,6 +98,7 @@ const MyAccount = () => {
                     
             </Grid>
         </div>
+        </>
     )
 }
 

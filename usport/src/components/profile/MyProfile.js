@@ -2,9 +2,13 @@ import React from "react";
 import "./profile.css";
 import { Avatar } from "@mui/material";
 import ProfileInformation from "./profileInfo";
+import Navbar from "../navbar/navbar";
+
 export default function MyProfile()
 {
     return(
+        <>
+        <Navbar authenticated={true}/>
         <div className="MyProfile">
             <h1 className="pHeader">
                 Profile
@@ -23,5 +27,6 @@ export default function MyProfile()
                 <ProfileInformation></ProfileInformation>
             </div>
         </div>
+        </>
     )
 }

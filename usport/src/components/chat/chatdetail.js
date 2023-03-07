@@ -17,12 +17,12 @@ const ChatDetail = ({setCurrentPage}) => {
         setCurrentPage(1);
     }
     return(
-        <Grid container>
-            <Grid item xs={8} lg={6} md={7} mb={4} sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+        <Grid container pl={4} pr={4} pb={4} pt={3}>
+            <Grid item xs={12} lg={6} md={7} mb={4} sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                 <IconButton aria-label="Back button Icon" onClick={handleBackButtonClick}>
                         <Avatar src={'https://i.imgur.com/f6Uve0Z.png'} />
                 </IconButton>
-                <Typography sx={{ fontWeight: 'bolder', textAlign: 'center'}} variant="h4">Chat</Typography>
+                <Typography sx={{ fontWeight: 'bolder'}} variant="h4">Chat</Typography>
             </Grid>
             <Grid item xs={12} sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
             <Box ml={15} mr={20} p={3} height={'85%'} width={500}
@@ -38,7 +38,7 @@ const ChatDetail = ({setCurrentPage}) => {
                         </AvatarGroup>
                         <Typography variant='h6' pl={1}>Players</Typography>
                     </Grid>
-                    <Grid item mt={5} xs={12} mb={3}>
+                    <Grid item xs={12}>
                     {/* TODO: Resolve the flickering issue */}
                     <FixedSizeList
                         height={280}

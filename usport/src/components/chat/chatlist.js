@@ -6,25 +6,28 @@ import ListItemButton from "@mui/material/ListItemButton";
 import { FixedSizeList } from "react-window";
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
+import Box from '@mui/material/Box';
 
 const ChatList = ({setCurrentPage}) => {
  
     return(
-<Grid container p={4}>
+        <Grid container pl={4} pr={4} pb={4} pt={3}>
             <Grid item xs={12} mb={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <Typography sx={{ fontWeight: 'bolder'}} variant="h4">Chats</Typography>
             </Grid>
             <Grid item xs={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                <FixedSizeList
-                    height={400}
-                    width={460}
-                    itemSize={50}
-                    itemCount={2}
-                    overscanCount={5}
-                    itemData={setCurrentPage}
-                >
-                    {renderRow}
-                </FixedSizeList>
+                <Box sx={{ backgroundColor: '#F8F4F4', p: 5, borderRadius: 5}}>
+                    <FixedSizeList
+                        height={400}
+                        width={460}
+                        itemSize={50}
+                        itemCount={2}
+                        overscanCount={5}
+                        itemData={setCurrentPage}
+                    >
+                        {renderRow}
+                    </FixedSizeList>
+                </Box>
             </Grid>
         </Grid>
     );
