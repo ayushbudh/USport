@@ -23,7 +23,7 @@ function App() {
           <Route path="/home" element={<Home/>} />
           <Route path="/chat" element={<Chat/>} />
           <Route path="/profile" element={<MyProfile/>} />
-          <Route path="/MyAccount" element={<MyAccount />} />
+          <Route path="/myaccount" element={<MyAccount />} />
 
         </Routes>
       </Router>
