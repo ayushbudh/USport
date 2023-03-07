@@ -1,6 +1,5 @@
 import './App.css';
 import MyProfile from './components/profile/MyProfile';
-import MyAccount from './components/MyAccount/MyAccount';
 import Home from './components/home/home'; 
 import Landing from './components/landing/landing';
 import Signin from './components/authentication/signin';
@@ -23,8 +22,6 @@ function App() {
           <Route path="/home" element={<Home/>} />
           <Route path="/chat" element={<Chat/>} />
           <Route path="/profile" element={<MyProfile/>} />
-          <Route path="/myaccount" element={<MyAccount />} />
-
         </Routes>
       </Router>
     </div>
