@@ -1,6 +1,6 @@
 import './App.css';
 import MyProfile from './components/profile/MyProfile';
-import MyAccount from './components/MyAccount';
+import MyAccount from './components/MyAccount/MyAccount';
 import Home from './components/home/home'; 
 import Landing from './components/landing/landing';
 import Signin from './components/authentication/signin';
