@@ -23,6 +23,9 @@
 {
     padding-top: 1em;
     color: rgb(151, 151, 151);
+    display: flex;
+    justify-content: center;
+    gap: 1em;
 }
 
 .pfp
@@ -38,6 +41,14 @@
     align-items: center;
     text-align: left;
 
+}
+.emailInput
+{
+    padding-top: 3em;
+    color: rgb(151, 151, 151);
+    display: flex;
+    justify-content: center;
+    gap: 1em;
 }
 .information {
   justify-content: flex-start;
