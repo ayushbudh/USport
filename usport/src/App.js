@@ -1,5 +1,5 @@
 import './App.css';
-import MyProfile from './components/MyProfile';
+import MyProfile from './components/profile/MyProfile';
 import Home from './components/home/home'; 
 import Landing from './components/landing/landing';
 import Signin from './components/authentication/signin';
@@ -7,7 +7,7 @@ import Signup from './components/authentication/signup';
 import Notification from './components/notification/notification';
 import Chat from './components/chat/chat';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MyAccount from './components/MyAccount';
+import MyAccount from './components/account/MyAccount';
 
 function App() {
   return (

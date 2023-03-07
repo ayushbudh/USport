@@ -1,5 +1,5 @@
 import React from "react";
-import "./profile.css";
+import "../profile/profile.css";
 import { Avatar } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
@@ -7,10 +7,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {BrowserRouter as Router, Route, Switch, Link, createBrowserRouter,createRoutesFromElements} from "react-router-dom";
-import MyProfile from "./MyProfile";
-
-
 
 const theme = createTheme({
     palette: {
@@ -33,16 +29,12 @@ const MyAccount = () => {
     };
 
 
-    const handleClick = () =>
-    {
+    const handleClick = () =>{
         console.log("Clciked");
     };
 
     return(
         <div className="MyProfile">
-            
-
-
         <Grid container component="main" sx={{ height: '90vh' }}>
             <Grid container justifyContent="center" spacing={2} mt={8}>
                 <Typography component="h1" variant="h5"
@@ -53,12 +45,13 @@ const MyAccount = () => {
             </Grid>
 
             <Grid container justifyContent="center" spacing={2} pb={4}>
-                <Grid item mt={2}><Avatar
+                <Grid item mt={2}>
+                    <Avatar
                         onClick={handleClick}
                         src={"https://i.imgur.com/bPrNWLo.jpg"} alt=""
                         style={{ width: "250px", height: "250px" }}
-                /></Grid>
-                
+                    />
+                </Grid>
             </Grid>
             <Grid
             container
