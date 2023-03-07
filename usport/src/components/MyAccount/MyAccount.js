@@ -1,11 +1,12 @@
 import React from 'react';
 import MyAccountImage from '../MyAccountImage';
 import MyAccountInfo from '../MyAccountInfo';
+import './MyAccount.css';
 
 const MyAccount = () => {
   return (
     <div className="content-container">
-      <div className="profile-container">
+      <div className="my-account-container">
         <MyAccountImage />
         <MyAccountInfo />
       </div>
@@ -14,3 +15,4 @@ const MyAccount = () => {
 }
 
 export default MyAccount;
+
