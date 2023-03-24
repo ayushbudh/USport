@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2c7ebbb0-3846-4e85-844b-645738058097" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../usport/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/public/images/rank1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/public/images/rank2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/public/images/rank3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/account/MyAccount.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/authentication/signin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/authentication/signup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/chat/chat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/chat/chatdetail.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/chat/chatlist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/creategame/create.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/creategame/creategame.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/creategame/createstatus.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/creategame/fieldinformation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/home/Top.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/home/board.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/home/connect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/home/database.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/home/home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/home/listPeople.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/home/play.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/home/profiles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/home/ranking.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/home/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/landing/landing.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/navbar/navbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/notification/notification.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/profile/MyProfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/profile/profile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/components/profile/profileInfo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../usport/src/setupTests.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NTdLoUkDFsdINzbZCOQJVcGJBL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/ayush/Documents/usport/Team15/backend/usport",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2c7ebbb0-3846-4e85-844b-645738058097" name="Changes" comment="" />
+      <created>1679691952600</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679691952600</updated>
+      <workItem from="1679691953743" duration="18000" />
+    </task>
+    <servers />
+  </component>
+</project>
