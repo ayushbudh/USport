@@ -1,5 +1,6 @@
 package com.app.usport.user;
 
+import com.app.usport.field.Field;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,4 +19,15 @@ public class UserService {
     public List<User> getAllUsers() {
         return users;
     }
+
+    //Only for testing, will delete this part later:
+//    public User getUser(int id)
+//    {
+//        for (User user : users) {
+//            if (user.getId() == id) {
+//                return user;
+//            }
+//        }
+//        return null;
+//    }
 }

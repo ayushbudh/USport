@@ -6,6 +6,7 @@ public class Field {
     private int fieldWidth;
     private int minimumPlayers;
     private boolean trainersAvailable;
+    private int addressId;
 
     public Field(int fieldID, int fieldHeight, int fieldWidth, int minimumPlayers, boolean trainersAvailable) {
         this.fieldID = fieldID;
@@ -13,6 +14,7 @@ public class Field {
         this.fieldWidth = fieldWidth;
         this.minimumPlayers = minimumPlayers;
         this.trainersAvailable = trainersAvailable;
+        this.addressId = addressId;
     }
 
     public int getFieldID() {
@@ -53,5 +55,12 @@ public class Field {
 
     public void setTrainersAvailable(boolean trainersAvailable) {
         this.trainersAvailable = trainersAvailable;
+    }
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 }

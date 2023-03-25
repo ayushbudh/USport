@@ -26,4 +26,11 @@ public class UserController {
         userService.createUser(user);
         return "New user created!";
     }
+
+    //only for testing, will delete later on
+//    @GetMapping("/getUser")
+//    public User getUser(@RequestParam int id)
+//    {
+//        return userService.getUser(id);
+//    }
 }

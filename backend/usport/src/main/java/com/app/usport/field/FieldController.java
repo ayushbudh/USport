@@ -27,5 +27,10 @@ public class FieldController {
             return "field created";
         }
 
+    @GetMapping("/getField")
+        public Field uniqueField(@RequestParam int id)
+        {
+            return fieldService.getField(id);
+        }
 
 }

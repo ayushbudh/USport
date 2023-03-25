@@ -24,4 +24,14 @@ public class FieldService {
     public List<Field> getAllFields() {
         return fields;
     }
+
+    public Field getField(int id)
+    {
+        for (Field field : fields) {
+            if (field.getFieldID() == id) {
+                return field;
+            }
+        }
+        return null;
+    }
 }
