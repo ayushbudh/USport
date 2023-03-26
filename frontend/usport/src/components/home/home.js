@@ -19,7 +19,7 @@ const Home = () => {
             <Box>
                 {value === 0 ?  <Play/> : value === 1 ? <Connect/> : <Ranking/> }
                 <BottomNavigation
-                    position="fixed" color="primary" sx={{ position: 'fixed', left: 250, right: 250, top: 'auto', bottom: 10, 
+                    position="fixed"  sx={{ position: 'fixed', left: 250, right: 250, top: 'auto', bottom: 10, 
                     boxShadow: '0px 0px 10px grey', borderRadius: 5 }}
                     showLabels
                     value={value}

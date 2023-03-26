@@ -32,7 +32,7 @@ public class UserAccountRepository {
 
     List<UserAccount> searchUser(String query){
         query = query.trim();
-        if(query.length() == 0) return new ArrayList<UserAccount>();
+        if(query.length() == 0) return getAll();
         StringBuilder pattern = new StringBuilder();
         pattern.append(query.substring(0,1).toUpperCase());
         pattern.append(query.substring(1).toLowerCase());

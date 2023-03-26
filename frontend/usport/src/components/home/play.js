@@ -44,17 +44,17 @@ const Play = () => {
                 height={300}/>
 
             </Grid>
-            <Grid item xs={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mt: 5}}>
+            <Grid item xs={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mt: 0}}>
                 <Box sx={{ backgroundColor: '#F8F4F4', p: 3, borderRadius: 5}}>
                     <FixedSizeList
-                        height={150}
+                        height={250}
                         width={500}
                         itemSize={80}
                         itemCount={2}
                         overscanCount={5}
                         itemData={navigate}
                     >
-                        {renderUpComingGames}
+                        {renderFields}
                     </FixedSizeList>
                 </Box>
             </Grid>
@@ -62,7 +62,7 @@ const Play = () => {
     );
 }
 
-const renderUpComingGames = (props) => {
+const renderFields = (props) => {
     const { index, style, data } = props;
     const handleListItemOnClick = () => {
         // TODO: Find an alternative
