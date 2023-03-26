@@ -2,7 +2,7 @@ package com.app.usport.user;
 
 import java.sql.Blob;
 
-public class User {
+public class UserAccount {
     private int id;
     private String firstName;
     private String lastName;
@@ -11,8 +11,18 @@ public class User {
     private boolean isSocialAccount;
     private Blob profileImg;
 
-    public User(String firstName, String lastName,
-                String email, String password, boolean isSocialAccount) {
+    public UserAccount(){
+        this.id = 0;
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.password = "";
+        this.isSocialAccount = false;
+    }
+
+    public UserAccount(int id, String firstName, String lastName,
+                       String email, String password, boolean isSocialAccount) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

@@ -1,0 +1,10 @@
+insert into user_account (id, first_name, last_name, password, email, is_social_account) values (1, 'Jeremie', 'Crookes', 'q3YKtN', 'jcrookes0@themeforest.net', true);
+insert into user_account (id, first_name, last_name, password, email, is_social_account) values (2, 'Amerigo', 'Prettjohn', 'gSRtQhB88dad', 'aprettjohn1@jugem.jp', true);
+insert into user_account (id, first_name, last_name, password, email, is_social_account) values (3, 'Caleb', 'Ledamun', '0kHdCFh', 'cledamun2@techcrunch.com', true);
+insert into user_account (id, first_name, last_name, password, email, is_social_account) values (4, 'Doyle', 'Dondon', 'UrCajreNokR', 'ddondon3@nps.gov', true);
+insert into user_account (id, first_name, last_name, password, email, is_social_account) values (5, 'Lorelle', 'Nuemann', 'YanUKFhk', 'lnuemann4@imdb.com', true);
+insert into user_account (id, first_name, last_name, password, email, is_social_account) values (6, 'Salomi', 'Nottle', 'geGT2EUyYTd', 'snottle5@kickstarter.com', false);
+insert into user_account (id, first_name, last_name, password, email, is_social_account) values (7, 'Jessalyn', 'Ruffle', 'eT1X0zd', 'jruffle6@who.int', false);
+insert into user_account (id, first_name, last_name, password, email, is_social_account) values (8, 'Candace', 'Queyeiro', 'bNRLMMc', 'cqueyeiro7@shutterfly.com', true);
+insert into user_account (id, first_name, last_name, password, email, is_social_account) values (9, 'Johan', 'Blaisdell', 'tpxD91k', 'jblaisdell8@wufoo.com', false);
+insert into user_account (id, first_name, last_name, password, email, is_social_account) values (10, 'Wood', 'Gagin', 'aeAqIxFhqEmO', 'wgagin9@shop-pro.jp', true);
