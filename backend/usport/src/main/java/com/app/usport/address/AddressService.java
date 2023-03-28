@@ -1,4 +1,4 @@
-package com.app.usport.field.address;
+package com.app.usport.address;
 
 import org.springframework.stereotype.Service;
 
@@ -23,6 +23,7 @@ public class AddressService {
                 return null;
             }
         }
+        address.setAddressID((addresses.size()+1));
         addresses.add(address);
 
         return address;

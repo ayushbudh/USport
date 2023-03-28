@@ -1,4 +1,4 @@
-package com.app.usport.field.address;
+package com.app.usport.address;
 
 
 import org.springframework.web.bind.annotation.*;
