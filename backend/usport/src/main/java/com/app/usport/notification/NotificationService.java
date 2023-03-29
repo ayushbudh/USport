@@ -1,22 +1,24 @@
 package com.app.usport.notification;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class NotificationService {
-    ArrayList<Notification> notifications;
-    public NotificationService(){
-        notifications = new ArrayList<>();
-    }
-    public Notification createNotification(Notification notification) {
-        notification.setId(notifications.size()+1);
-        notifications.add(notification);
-        return notification;
+    private NotificationRepository notificationRepository;
+
+    @Autowired
+    public NotificationService(NotificationRepository notificationRepository){
+        this.notificationRepository = notificationRepository;
     }
 
-    public ArrayList<Notification> getAllNotifications() {
-        return notifications;
+    public List<Notification> getUserNotifications(String userId) {
+        return this.notificationRepository.getUserNotifications(userId);
+    }
+
+    public boolean createNotification(Notification notification){
+        return this.notificationRepository.createNotification(notification);
     }
 
 }

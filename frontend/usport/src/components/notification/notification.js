@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -9,8 +9,58 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { FixedSizeList } from 'react-window';
 import Navbar from '../navbar/navbar';
+import notificationService from '../../services/NotificationService';
+import Skeleton from '@mui/material/Skeleton';
 
 const Notification = () => {
+
+    const [notifications, setNotifications] = useState([]);
+    const [upcomingGamesNotifications, setUpcomingGamesNotifications] = useState([]);
+    const [loading, setLoading] = useState(true);
+    // TODO: Remove userId when the authentication is implemented
+    const userId = 5;
+
+    useEffect(() => {
+        notificationService.getUserNotifications(userId).then((notifications) => {
+            setNotifications(notifications.data.filter((x) => x.isUpcomingGame === false));
+            setUpcomingGamesNotifications(notifications.data.filter((x) => x.isUpcomingGame === true));
+        });
+        setLoading(false);   
+    }, []);
+
+    const renderNotifications = (props) => {
+      const { index, style } = props;
+      return (
+        <ListItem style={style} key={index} component="div" disablePadding>
+          <ListItemButton>
+              <ListItemAvatar>
+              {loading ? 
+                <Skeleton variant="circular">
+                  <Avatar />
+                </Skeleton>:
+                <Avatar
+                  alt={`Avatar}`}
+                  src={index % 2 === 0 ? "https://i.imgur.com/5ey7Mmn.png": "https://i.imgur.com/X7P8oA2.png"}
+              />}
+                </ListItemAvatar>
+                {loading ? <ListItemText><Skeleton/></ListItemText> : <ListItemText primary={`${notifications[index].message}`} />}
+          </ListItemButton>
+        </ListItem>
+      );
+    }
+
+    const renderUpComingGames = (props) => {
+      const { index, style } = props;
+    
+      return (
+        <ListItem style={style} key={index} component="div" disablePadding>
+          <ListItemButton>
+            <ListItemText  primary={`${upcomingGamesNotifications[index].message}`}/>
+          </ListItemButton>
+        </ListItem>
+      );
+    }
+
     return(
         <>
             <Navbar authenticated={true}/>
@@ -26,8 +76,8 @@ const Notification = () => {
                         <FixedSizeList
                             height={400}
                             width={500}
-                            itemSize={46}
-                            itemCount={1}
+                            itemSize={70}
+                            itemCount={notifications.length}
                             overscanCount={5}
                         >
                             {renderNotifications}
@@ -39,8 +89,8 @@ const Notification = () => {
                         <FixedSizeList
                             height={400}
                             width={500}
-                            itemSize={46}
-                            itemCount={1}
+                            itemSize={70}
+                            itemCount={upcomingGamesNotifications.length}
                             overscanCount={5}
                         >
                             {renderUpComingGames}
@@ -51,35 +101,5 @@ const Notification = () => {
         </>
     );
 }
-
-const renderNotifications = (props) => {
-    const { index, style } = props;
-  
-    return (
-      <ListItem style={style} key={index} component="div" disablePadding>
-        <ListItemButton>
-            <ListItemAvatar>
-                <Avatar
-                  alt={`Avatar}`}
-                  src={`https://i.imgur.com/fdhlThj.jpg`}
-                />
-              </ListItemAvatar>
-          <ListItemText primary={`John Doe started following you.`} />
-        </ListItemButton>
-      </ListItem>
-    );
-  }
-
-  const renderUpComingGames = (props) => {
-    const { index, style } = props;
-  
-    return (
-      <ListItem style={style} key={index} component="div" disablePadding>
-        <ListItemButton>
-          <ListItemText  primary={`Green Park`} secondary={`Address: 33 Gilmer Street SE Atlanta, GA 30303 `}/>
-        </ListItemButton>
-      </ListItem>
-    );
-  }
 
 export default Notification;

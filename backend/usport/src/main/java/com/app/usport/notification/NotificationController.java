@@ -18,15 +18,15 @@ public class NotificationController {
         this.notificationService = notificationService;
     }
 
-    @GetMapping("/all")
-    public List<Notification> list(){
-        return notificationService.getAllNotifications();
+    @GetMapping("")
+    public List<Notification> list(@RequestParam(value = "userId", defaultValue = "-1") String userId){
+        if(userId.equals("-1")) return new ArrayList<Notification>();
+        return notificationService.getUserNotifications(userId);
     }
 
     @PostMapping("/create")
     public String add(@RequestBody Notification notification){
-        notificationService.createNotification(notification);
-        System.out.println(notification);
-        return "New notification created!";
+        if(notificationService.createNotification(notification)) return "Notification created!";
+        return "Notification couldn't be created!";
     }
 }

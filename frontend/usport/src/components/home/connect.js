@@ -46,7 +46,7 @@ const Connect = () => {
                         </Skeleton>:
                       <Avatar
                       alt={`Avatar}`}
-                      src={`https://i.imgur.com/fdhlThj.jpg`}
+                      src={index % 2 === 0 ? "https://i.imgur.com/5ey7Mmn.png": "https://i.imgur.com/X7P8oA2.png"}
                     />}
                     </ListItemAvatar>
                 {loading ? <ListItemText><Skeleton/></ListItemText> :<ListItemText primary={`${userData[index].firstName} ${userData[index].lastName}`} />}    
