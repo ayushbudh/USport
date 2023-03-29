@@ -22,8 +22,9 @@ const Notification = () => {
 
     useEffect(() => {
         notificationService.getUserNotifications(userId).then((notifications) => {
-            setNotifications(notifications.data.filter((x) => x.isUpcomingGame === false));
-            setUpcomingGamesNotifications(notifications.data.filter((x) => x.isUpcomingGame === true));
+          console.log(notifications);
+            setNotifications(notifications.data.filter((x) => x.is_upcoming_game === false));
+            setUpcomingGamesNotifications(notifications.data.filter((x) => x.is_upcoming_game === true));
         });
         setLoading(false);   
     }, []);
