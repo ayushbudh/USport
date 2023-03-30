@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -82,8 +83,10 @@ const Connect = () => {
                     sx={{ ml: 1, flex: 1 }}
                     placeholder="Search for players and trainers..."
                     inputProps={{ 'aria-label': 'search for players and trainers' }}
-                    onChange={(e) => searchQueryFilter(e.target.value)}
                 />
+                <IconButton sx={{ p: '10px' }} aria-label="directions">
+                    <FilterAltIcon />
+                </IconButton>
                 </Box>
             </Grid>
             <Grid item xs={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -111,6 +114,33 @@ const Connect = () => {
     );
 }
 
-
+const renderAddresses = (props) => {
+    const { index, style } = props;
+  
+    return (
+        <ListItem style={style} key={index} component="div" disablePadding
+        secondaryAction={
+            <>
+            <IconButton edge="end" aria-label="comments">
+              <GroupAddIcon />
+            </IconButton>
+            <IconButton edge="end" aria-label="comments">
+              <ChatBubbleIcon />
+            </IconButton>
+            </>
+          } 
+          >
+          <ListItemButton>
+              <ListItemAvatar>
+                  <Avatar
+                    alt={`Avatar}`}
+                    src={`https://i.imgur.com/fdhlThj.jpg`}
+                  />
+                </ListItemAvatar>
+            <ListItemText primary={`John Doe`} />
+          </ListItemButton>
+        </ListItem>
+    );
+}
 
 export default Connect;
