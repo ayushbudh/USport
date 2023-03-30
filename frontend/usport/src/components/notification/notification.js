@@ -11,6 +11,7 @@ import { FixedSizeList } from 'react-window';
 import Navbar from '../navbar/navbar';
 import notificationService from '../../services/NotificationService';
 import Skeleton from '@mui/material/Skeleton';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Notification = () => {
 
@@ -21,12 +22,12 @@ const Notification = () => {
     const userId = 5;
 
     useEffect(() => {
-        notificationService.getUserNotifications(userId).then((notifications) => {
-          console.log(notifications);
+        notificationService.getUserNotifications(userId)
+        .then((notifications) => {
             setNotifications(notifications.data.filter((x) => x.is_upcoming_game === false));
             setUpcomingGamesNotifications(notifications.data.filter((x) => x.is_upcoming_game === true));
+            setLoading(false);
         });
-        setLoading(false);   
     }, []);
 
     const renderNotifications = (props) => {
@@ -56,7 +57,7 @@ const Notification = () => {
       return (
         <ListItem style={style} key={index} component="div" disablePadding>
           <ListItemButton>
-            <ListItemText  primary={`${upcomingGamesNotifications[index].message}`}/>
+          {loading ? <ListItemText><Skeleton/></ListItemText> : <ListItemText  primary={`${upcomingGamesNotifications[index].message}`}/>}
           </ListItemButton>
         </ListItem>
       );
@@ -74,20 +75,32 @@ const Notification = () => {
                 </Grid>
                 <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', mt: 5}}>
                     <Box sx={{ backgroundColor: '#F8F4F4', p: 5, borderRadius: 5}}>
-                        <FixedSizeList
-                            height={400}
-                            width={500}
-                            itemSize={70}
-                            itemCount={notifications.length}
-                            overscanCount={5}
-                        >
-                            {renderNotifications}
-                        </FixedSizeList>
+                        {loading ? 
+                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                          width: 500 }}>
+                           <CircularProgress />
+                         </Box>
+                         :
+                         <FixedSizeList
+                         height={400}
+                         width={500}
+                         itemSize={70}
+                         itemCount={notifications.length}
+                         overscanCount={5}
+                     >
+                         {renderNotifications}
+                     </FixedSizeList>}
                     </Box>
                 </Grid>
                 <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', mt: 5}}>
                     <Box sx={{ backgroundColor: '#F8F4F4', p: 5, borderRadius: 5}}>
-                        <FixedSizeList
+                        {loading ? 
+                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                         width: 500 }}>
+                          <CircularProgress />
+                        </Box>
+                         :
+                         <FixedSizeList
                             height={400}
                             width={500}
                             itemSize={70}
@@ -95,7 +108,8 @@ const Notification = () => {
                             overscanCount={5}
                         >
                             {renderUpComingGames}
-                        </FixedSizeList>
+                        </FixedSizeList>}
+                        
                     </Box>
                 </Grid>
             </Grid>
