@@ -42,9 +42,9 @@ const ChatDetail = ({setCurrentPage}) => {
                     {/* TODO: Resolve the flickering issue */}
                     <FixedSizeList
                         height={280}
-                        itemSize={250}
+                        itemSize={70}
                         itemCount={10}
-                        overscanCount={115}
+                        overscanCount={25}
                     >
                         {renderChat}
                     </FixedSizeList>
@@ -126,19 +126,18 @@ const chat = [
   ];
   
 const renderChat = (props) => {
-    const { index } = props;
+    const { index, style } = props;
+    console.log(style);
     return (
       <ListItem
+        style={style}
         sx={{
           borderRadius: 200,
           bgcolor: index % 2 === 0 ? "#009A17" : "#011627",
-          display: "flex",
-          alignItems: "center",
-          width: "50%",
-          ml: index % 2 === 0 ? "0%" : "50%"
+          width: '10%',
+          marginBottom: 90
         }}
         key={index}
-        component="div"
         disablePadding
       >
         <ListItemButton sx={{ textAlign: index % 2 === 0 ? "start" : "end", color: '#FDFFFC' }}>

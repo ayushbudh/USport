@@ -1,7 +1,6 @@
 package com.app.usport.chat;
 
 import com.app.usport.field.Field;
-import com.app.usport.user.User;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
