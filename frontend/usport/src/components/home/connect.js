@@ -1,5 +1,4 @@
-import React from 'react'
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import React, { useState, useEffect } from 'react'
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -15,7 +14,6 @@ import Avatar from '@mui/material/Avatar';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import userAccountService from '../../services/UserAccountService';
 import Skeleton from '@mui/material/Skeleton';
-import CircularProgress from '@mui/material/CircularProgress';
 
 const Connect = () => {
 
@@ -24,12 +22,11 @@ const Connect = () => {
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {
-        userAccountService.getUserAccounts()
-        .then((userAccounts) => {
+        userAccountService.getUserAccounts().then((userAccounts) => {
             setUserData(userAccounts.data);
             setUserCount(userAccounts.data.length);  
-            setLoading(false);   
         })
+        setLoading(false);   
     }, []);
 
     const renderUsers = (props) => {
@@ -83,29 +80,21 @@ const Connect = () => {
                     sx={{ ml: 1, flex: 1 }}
                     placeholder="Search for players and trainers..."
                     inputProps={{ 'aria-label': 'search for players and trainers' }}
+                    onChange={(e) => searchQueryFilter(e.target.value)}
                 />
-                <IconButton sx={{ p: '10px' }} aria-label="directions">
-                    <FilterAltIcon />
-                </IconButton>
                 </Box>
             </Grid>
             <Grid item xs={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <Box sx={{ backgroundColor: '#F8F4F4', p: 5, borderRadius: 5}}>
-                        {userCount === 0 ? 
-                        <Box height={300}
-                            width={500} sx={{ textAlign: 'center'}} >No Users Found!</Box>:
-                        loading ? 
-                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
-                            width: 500 }}>
-                         <CircularProgress />
-                        </Box>:
+                        {userCount === 0 ? <Box height={300}
+                        width={500} sx={{ textAlign: 'center'}} >No Users Found!</Box>:
                         <FixedSizeList
-                            height={300}
-                            width={500}
-                            itemSize={56}
-                            itemCount={userCount}
-                            overscanCount={5}
-                        >
+                        height={300}
+                        width={500}
+                        itemSize={56}
+                        itemCount={userCount}
+                        overscanCount={5}
+                    >
                         {renderUsers}
                     </FixedSizeList>}
                     </Box>
@@ -114,33 +103,6 @@ const Connect = () => {
     );
 }
 
-const renderAddresses = (props) => {
-    const { index, style } = props;
-  
-    return (
-        <ListItem style={style} key={index} component="div" disablePadding
-        secondaryAction={
-            <>
-            <IconButton edge="end" aria-label="comments">
-              <GroupAddIcon />
-            </IconButton>
-            <IconButton edge="end" aria-label="comments">
-              <ChatBubbleIcon />
-            </IconButton>
-            </>
-          } 
-          >
-          <ListItemButton>
-              <ListItemAvatar>
-                  <Avatar
-                    alt={`Avatar}`}
-                    src={`https://i.imgur.com/fdhlThj.jpg`}
-                  />
-                </ListItemAvatar>
-            <ListItemText primary={`John Doe`} />
-          </ListItemButton>
-        </ListItem>
-    );
-}
+
 
 export default Connect;
