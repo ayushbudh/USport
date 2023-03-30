@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../profile/profile.css";
 import { Avatar } from "@mui/material";
 import TextField from '@mui/material/TextField';
@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Navbar from "../navbar/navbar";
+import userAccountService from "../../services/UserAccountService";
 
 const theme = createTheme({
     palette: {
@@ -18,6 +19,17 @@ const theme = createTheme({
 });
 
 const MyAccount = () => {
+
+    const [userData, setUserData] = useState({});
+    const [loading, setLoading] = useState(true);
+    
+    useEffect(() => {
+        userAccountService.getUserAccounts().then((userAccounts) => {
+            setUserData(userAccounts.data[0]);
+            setLoading(false);
+        })
+    }, []);
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);

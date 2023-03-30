@@ -2,12 +2,12 @@ CREATE TABLE user_account (
 	id serial PRIMARY KEY,
 	first_name VARCHAR (50) NOT NULL,
 	last_name VARCHAR (50) NOT NULL,
-	password VARCHAR (50) NOT NULL,
 	email VARCHAR (255) UNIQUE NOT NULL,
+	password VARCHAR (50) NOT NULL,
+	age int NOT NULL,
 	is_social_account BOOLEAN NOT NULL,
 	profile_img BYTEA
 );
-
 
 CREATE TABLE user_metric (
 	id serial PRIMARY KEY,
@@ -97,10 +97,14 @@ CREATE TABLE chat (
 
 CREATE TABLE notification (
 	id serial PRIMARY KEY,
-	user_id int NOT NULL,
+	from_user_id int NOT NULL,
+	to_user_id int NOT NULL,
 	message VARCHAR (160) NOT NULL,
-	notification_type int NOT NULL,
+	date date NOT NULL,
+	time time NOT NULL,
+	type int NOT NULL,
 	state int NOT NULL,
 	is_upcoming_game boolean NOT NULL,
-	FOREIGN KEY(user_id) REFERENCES user_account(id)
+	FOREIGN KEY(from_user_id) REFERENCES user_account(id),
+	FOREIGN KEY(to_user_id) REFERENCES user_account(id)
 );
