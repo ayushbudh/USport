@@ -5,6 +5,7 @@ import com.app.usport.user.User;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class ChatService {
 
     public Chat sendMessage(Chat chat) {
         chat.setChatID(messages.size()+1);
-        chat.setSendDate((int) (Instant.now().getEpochSecond()));
+        chat.setSendDate(LocalDate.now());
         messages.add(chat);
         return chat;
     }

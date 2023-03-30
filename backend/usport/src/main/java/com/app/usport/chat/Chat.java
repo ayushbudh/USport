@@ -1,14 +1,16 @@
 package com.app.usport.chat;
 
+import java.time.LocalDate;
+
 public class Chat {
     private int ChatID;
     private int groupChatID;
     private String message;
     private int fromUserID;
-    private int sendDate;
-    private int readDate;
+    private LocalDate sendDate;
+    private LocalDate readDate;
 
-    public Chat(int ChatID, int groupChatID, String message, int fromUserID, int sendDate, int readDate)
+    public Chat(int ChatID, int groupChatID, String message, int fromUserID, LocalDate sendDate, LocalDate readDate)
     {
         this.ChatID = ChatID;
         this.groupChatID = groupChatID;
@@ -52,19 +54,19 @@ public class Chat {
         return fromUserID;
     }
 
-    public void setSendDate(int sendDate) {
+    public void setSendDate(LocalDate sendDate) {
         this.sendDate = sendDate;
     }
 
-    public int getSendDate() {
+    public LocalDate getSendDate() {
         return sendDate;
     }
 
-    public void setReadDate(int readDate) {
+    public void setReadDate(LocalDate readDate) {
         this.readDate = readDate;
     }
 
-    public int getReadDate() {
+    public LocalDate getReadDate() {
         return readDate;
     }
 }
