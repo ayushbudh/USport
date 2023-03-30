@@ -7,12 +7,14 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class ChatRepository {
     private final JdbcTemplate jdbcTemplate;
+    private Chat chat;
 
     @Autowired
     public ChatRepository(JdbcTemplate jdbcTemplate)
@@ -24,6 +26,12 @@ public class ChatRepository {
         String sql = "SELECT * FROM chat;";
         return jdbcTemplate.query(sql, mapChatWithDB());
     }
+
+    public void sendMessage(Chat chat) {
+        String sql = "INSERT INTO chat (group_chat_id, message_text, from_user_id, send_date, read_date) VALUES (?, ?, ?, ?, ?);";
+        jdbcTemplate.update(sql, chat.getGroupChatID(), chat.getMessage(), chat.getFromUserID(), chat.getSendDate(), chat.getReadDate() == null ? LocalDate.now() : chat.getReadDate());
+    }
+
 
     private RowMapper<Chat> mapChatWithDB() {
         return (resultSet, i) -> {

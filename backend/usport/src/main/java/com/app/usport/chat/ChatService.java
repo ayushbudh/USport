@@ -1,7 +1,8 @@
 package com.app.usport.chat;
 
 import com.app.usport.field.Field;
-import com.app.usport.user.User;
+import com.app.usport.user.UserAccount;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -16,19 +17,23 @@ public class ChatService {
 
     private ArrayList<Chat> messages;
 
+    @Autowired
+    private ChatRepository chatRepository;
+
+    @Autowired
     public ChatService() {
         messages = new ArrayList<>();
     }
 
     public Chat sendMessage(Chat chat) {
-        chat.setChatID(messages.size()+1);
+//        chat.setChatID(messages.size()+1);
         chat.setSendDate(LocalDate.now());
-        messages.add(chat);
+        chatRepository.sendMessage(chat);
         return chat;
     }
 
     public List<Chat> getAllMessages() {
-        return messages;
+        return chatRepository.getAll();
     }
 }
 
