@@ -12,7 +12,6 @@ import Navbar from '../navbar/navbar';
 
 const Home = () => {
     const [value, setValue] = React.useState(0);
-
      return(
         <>
             <Navbar authenticated={true}/>

@@ -23,8 +23,8 @@ public class UserAccountRepository {
         return jdbcTemplate.query(sql, mapPlayerFomDb());
     }
 
-    UserAccount getUser(int userId){
-        String sql = "SELECT * FROM user_account WHERE id =" + userId + ";";
+    UserAccount getUser(String uid){
+        String sql = "SELECT * FROM user_account WHERE uid=\'" + uid + "\';";
         List<UserAccount> result = jdbcTemplate.query(sql, mapPlayerFomDb());
         if (result.size() == 0) return new UserAccount();
         return result.get(0);
@@ -43,14 +43,35 @@ public class UserAccountRepository {
         return result;
     }
 
+
+    public boolean createUserAccount(UserAccount userAccount){
+        // insert data
+        String sql = "INSERT INTO user_account " +
+                "(uid, first_name, last_name, email, " +
+                "age, is_social_account) VALUES " +
+                "(\'" + userAccount.getUID() + "\', \'" + userAccount.getFirstName().trim()
+                + "\', " + "\'" + userAccount.getLastName().trim() +  "\'" +
+                ", \'" + userAccount.getEmail().trim() + "\'," +
+                userAccount.getAge() + "," +
+                userAccount.getIsSocialAccount() + ");";
+
+        try{
+            jdbcTemplate.update(sql);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
     private RowMapper<UserAccount> mapPlayerFomDb() {
         return (resultSet, i) -> {
             return new UserAccount(
                     resultSet.getInt("id"),
+                    resultSet.getString("uid"),
                     resultSet.getString("first_name"),
                     resultSet.getString("last_name"),
                     resultSet.getString("email"),
-                    resultSet.getString("password"),
+                    resultSet.getInt("age"),
                     resultSet.getBoolean("is_social_account")
             );
         };

@@ -13,10 +13,12 @@ frontend/usport/build
 
 # misc
 frontend/usport/.DS_Store
+frontend/usport/.env
 frontend/usport/.env.local
 frontend/usport/.env.development.local
 frontend/usport/.env.test.local
 frontend/usport/.env.production.local
+
 
 frontend/usport/npm-debug.log*
 frontend/usport/yarn-debug.log*

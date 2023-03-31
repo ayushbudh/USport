@@ -14,20 +14,23 @@ import Avatar from '@mui/material/Avatar';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import userAccountService from '../../services/UserAccountService';
 import Skeleton from '@mui/material/Skeleton';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Connect = () => {
 
     const [userCount, setUserCount] = useState(-1);
     const [userData, setUserData] = useState([]);
     const [loading, setLoading] = useState(true);
-    
+    const { currentUserId } = useAuth();
+
     useEffect(() => {
         userAccountService.getUserAccounts().then((userAccounts) => {
-            setUserData(userAccounts.data);
-            setUserCount(userAccounts.data.length);  
+            const filteredUserAccounts = userAccounts.data.filter( (useraccount) => useraccount.id !== currentUserId);
+            setUserData(filteredUserAccounts);
+            setUserCount(filteredUserAccounts.length);  
         })
         setLoading(false);   
-    }, []);
+    }, [currentUserId]);
 
     const renderUsers = (props) => {
         const { index, style } = props;
@@ -49,7 +52,7 @@ const Connect = () => {
                       src={index % 2 === 0 ? "https://i.imgur.com/5ey7Mmn.png": "https://i.imgur.com/X7P8oA2.png"}
                     />}
                     </ListItemAvatar>
-                {loading ? <ListItemText><Skeleton/></ListItemText> :<ListItemText primary={`${userData[index].firstName} ${userData[index].lastName}`} />}    
+                {loading ? <ListItemText><Skeleton/></ListItemText> :<ListItemText primary={`${userData[index]["first_name"]} ${userData[index]["last_name"]}`} />}    
               </ListItemButton>
             </ListItem>
         );

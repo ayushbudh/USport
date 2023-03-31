@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -12,6 +12,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { useNavigate } from "react-router-dom";
+import Alert from '@mui/material/Alert';
+import { useAuth } from '../../contexts/AuthContext';
+import userAccountService from '../../services/UserAccountService';
 
 const theme = createTheme({
     palette: {
@@ -22,21 +25,34 @@ const theme = createTheme({
   });
 
 const Signup = () => {
-  const handleSubmit = (event) => {
+  
+  const navigate = useNavigate();
+  const [errormsg, setErrorMsg] = useState("");
+  const [error, setError] = useState(false);
+  const { signupUser } = useAuth();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-      firstName: data.get('firstName'),
-      lastName: data.get('lastName')
-    });
+    const formData = new FormData(event.currentTarget);
+    try{
+        const userCredential = await signupUser(formData.get('email'), formData.get('password'));
+        const user = userCredential.user;
+        try{
+          await userAccountService.addUser(user.uid, formData.get("firstName"), 
+              formData.get("lastName"), formData.get("email"), 19, false);
+          navigate('/home');
+        }catch(error){
+          const errorMessage = error.message;
+          setError(true);
+          setErrorMsg(errorMessage);
+        }
+    }catch(error){
+        const errorMessage = error.message;
+        setError(true);
+        setErrorMsg(errorMessage);
+    }
   };
 
-  const navigate = useNavigate();
-  const handleSignup = () => {
-    navigate('/home');
-  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -88,7 +104,8 @@ const Signup = () => {
             }}>
               Create Account
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            {error && <Alert severity="error">{errormsg}</Alert>}
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, textAlign: 'center' }}>
             <TextField
                 margin="normal"
                 required
@@ -135,7 +152,6 @@ const Signup = () => {
                 fullWidth
                 color="primary"
                 sx={{ mt: 3, mb: 2 }}
-                onClick={handleSignup}
               >
                 Sign Up
               </Button>

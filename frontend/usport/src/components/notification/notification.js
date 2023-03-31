@@ -24,6 +24,10 @@ const Notification = () => {
     useEffect(() => {
         notificationService.getUserNotifications(userId)
         .then((notifications) => {
+            if(notifications.data.length === 0){
+              setLoading(false);
+              return;
+            }
             setNotifications(notifications.data.filter((x) => x.is_upcoming_game === false));
             setUpcomingGamesNotifications(notifications.data.filter((x) => x.is_upcoming_game === true));
             setLoading(false);
@@ -81,6 +85,11 @@ const Notification = () => {
                            <CircularProgress />
                          </Box>
                          :
+                         notifications.length === 0 ? 
+                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                          width: 500 }}>
+                           No Notifications
+                         </Box>:
                          <FixedSizeList
                          height={400}
                          width={500}
@@ -89,7 +98,8 @@ const Notification = () => {
                          overscanCount={5}
                      >
                          {renderNotifications}
-                     </FixedSizeList>}
+                     </FixedSizeList>
+                         }
                     </Box>
                 </Grid>
                 <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', mt: 5}}>
@@ -100,6 +110,11 @@ const Notification = () => {
                           <CircularProgress />
                         </Box>
                          :
+                         upcomingGamesNotifications.length === 0 ? 
+                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                          width: 500 }}>
+                           No Upcoming Games
+                         </Box>:
                          <FixedSizeList
                             height={400}
                             width={500}

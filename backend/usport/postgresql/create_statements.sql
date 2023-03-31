@@ -1,9 +1,9 @@
 CREATE TABLE user_account (
 	id serial PRIMARY KEY,
+	uid VARCHAR (128) UNIQUE NOT NULL,
 	first_name VARCHAR (50) NOT NULL,
 	last_name VARCHAR (50) NOT NULL,
 	email VARCHAR (255) UNIQUE NOT NULL,
-	password VARCHAR (50) NOT NULL,
 	age int NOT NULL,
 	is_social_account BOOLEAN NOT NULL,
 	profile_img BYTEA
@@ -84,15 +84,16 @@ CREATE TABLE group_chat (
 	description VARCHAR (100) NOT NULL
 );
 
-CREATE TABLE chat (
-	id serial PRIMARY KEY,
-	from_user_id int NOT NULL,
-	group_chat_id int NOT NULL,
-	send_date date NOT NULL,
-	read_date date NOT NULL,
-	message_text VARCHAR (160) NOT NULL,
-	FOREIGN KEY(from_user_id) REFERENCES user_account(id),
-	FOREIGN KEY(group_chat_id) REFERENCES group_chat(id)
+CREATE TABLE message (
+    id serial PRIMARY KEY,
+    from_user_id int NOT NULL,
+    to_user_id int NOT NULL,
+    group_chat_id int NOT NULL,
+    send_date date NOT NULL,
+    message_text VARCHAR (160) NOT NULL,
+    FOREIGN KEY(from_user_id) REFERENCES user_account(id),
+    FOREIGN KEY(to_user_id) REFERENCES user_account(id),
+    FOREIGN KEY(group_chat_id) REFERENCES group_chat(id)
 );
 
 CREATE TABLE notification (

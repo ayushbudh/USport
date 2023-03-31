@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -12,6 +12,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { useNavigate } from "react-router-dom";
+import Alert from '@mui/material/Alert';
+import { useAuth } from '../../contexts/AuthContext';
 
 const theme = createTheme({
     palette: {
@@ -24,17 +26,21 @@ const theme = createTheme({
 const Signin = () => {
 
   const navigate = useNavigate();
-  const handleSignin = () => {
-    navigate('/home');
-  }
+  const [errormsg, setErrorMsg] = useState("");
+  const [error, setError] = useState(false);
+  const { signInUser } = useAuth();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password')
-    });
+    const formData = new FormData(event.currentTarget);
+    try{
+      await signInUser(formData.get('email'), formData.get('password'));
+      navigate('/home');
+    }catch(error){
+        const errorMessage = error.message;
+        setError(true);
+        setErrorMsg(errorMessage);
+    }
   };
 
   return (
@@ -102,7 +108,8 @@ const Signin = () => {
             }}>
               Sign In
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            {error && <Alert severity="error">{errormsg}</Alert>}
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -129,7 +136,6 @@ const Signin = () => {
                 fullWidth
                 color="primary"
                 sx={{ mt: 3, mb: 2 }}
-                onClick={handleSignin}
               >
                 Sign in
               </Button>

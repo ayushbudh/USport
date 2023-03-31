@@ -1,6 +1,5 @@
 package com.app.usport.user;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -23,14 +22,20 @@ public class UserAccountController {
     }
 
     // TODO: Redo this with a better approach for non-existing user accounts
-    @GetMapping(path = "/{userId}")
+    @GetMapping(path = "/{uid}")
     public UserAccount getUser(
-            @PathVariable("userId") int userId) {
-        return userAccountService.getUser(userId);
+            @PathVariable("uid") String uid) {
+        return userAccountService.getUser(uid);
     }
 
     @GetMapping("/search")
     public List<UserAccount> searchUser(@RequestParam(value = "query", defaultValue = "") String query) {
         return userAccountService.searchUser(query);
+    }
+
+    @PostMapping("/create")
+    public String add(@RequestBody UserAccount userAccount){
+        if(userAccountService.createUserAccount(userAccount)) return "User account created!";
+        return "User account couldn't be created!";
     }
 }

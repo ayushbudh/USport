@@ -15,11 +15,15 @@ public class UserAccountService {
         return userAccountRepository.getAll();
     }
 
-    public UserAccount getUser(int userId){
-        return userAccountRepository.getUser(userId);
+    public UserAccount getUser(String uid){
+        return userAccountRepository.getUser(uid);
     }
 
     public List<UserAccount> searchUser(String query){
         return userAccountRepository.searchUser(query);
+    }
+
+    public boolean createUserAccount(UserAccount userAccount){
+        return this.userAccountRepository.createUserAccount(userAccount);
     }
 }

@@ -13,21 +13,29 @@ import { useNavigate } from "react-router-dom";
 import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Navbar = ({authenticated}) => {
 
   const navigate = useNavigate();
+  const { logoutUser } = useAuth();
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const routeToPage = (url) => {
     navigate(url);
   }
   const handleOpenUserMenu = (event) => {
-    console.log(event.currentTarget)
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = (url) => {
+  const handleCloseUserMenu = async (url) => {
+    if(url === '/signin'){
+      try{
+        await logoutUser();
+      }catch(error){
+        // TODO: Add Snackbar component to show error
+      }
+    }
     setAnchorElUser(null);
     navigate(url);
   };
