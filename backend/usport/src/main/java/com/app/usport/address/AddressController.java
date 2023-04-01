@@ -3,6 +3,8 @@ package com.app.usport.address;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/address")
 @CrossOrigin
@@ -16,6 +18,11 @@ public class AddressController {
     public Address getAddress(@RequestParam int addressID)
     {
         return addressService.getAddress(addressID);
+    }
+    @GetMapping("/SearchAddress")
+    public List<Address> searchAddress(String streetName)
+    {
+        return addressService.getSimilarAddress(streetName);
     }
 
     @PostMapping("/addAddress")

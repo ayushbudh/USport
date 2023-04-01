@@ -8,7 +8,7 @@ public class Field {
     private boolean trainersAvailable;
     private int addressId;
 
-    public Field(int fieldID, int fieldHeight, int fieldWidth, int minimumPlayers, boolean trainersAvailable) {
+    public Field(int fieldID, int addressId ,int fieldHeight, int fieldWidth, int minimumPlayers, boolean trainersAvailable) {
         this.fieldID = fieldID;
         this.fieldHeight = fieldHeight;
         this.fieldWidth = fieldWidth;

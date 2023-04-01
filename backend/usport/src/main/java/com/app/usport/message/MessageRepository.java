@@ -1,4 +1,4 @@
-package com.app.usport.chat;
+package com.app.usport.message;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,38 +8,38 @@ import org.springframework.stereotype.Repository;
 
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ChatRepository {
+public class MessageRepository {
     private final JdbcTemplate jdbcTemplate;
-    private Chat chat;
+    private Message message;
 
     @Autowired
-    public ChatRepository(JdbcTemplate jdbcTemplate)
+    public MessageRepository(JdbcTemplate jdbcTemplate)
     {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    List<Chat> getAll(){
-        String sql = "SELECT * FROM chat;";
+    List<Message> getAll(){
+        String sql = "SELECT * FROM message;";
         return jdbcTemplate.query(sql, mapChatWithDB());
     }
 
-    public void sendMessage(Chat chat) {
-        String sql = "INSERT INTO chat (group_chat_id, message_text, from_user_id, send_date, read_date) VALUES (?, ?, ?, ?, ?);";
-        jdbcTemplate.update(sql, chat.getGroupChatID(), chat.getMessage(), chat.getFromUserID(), chat.getSendDate(), chat.getReadDate() == null ? LocalDate.now() : chat.getReadDate());
+    public void sendMessage(Message message) {
+        String sql = "INSERT INTO message (group_chat_id, message_text, from_user_id, to_user_id, send_date, read_date) VALUES (?, ?, ?, ?, ?, ?);";
+        jdbcTemplate.update(sql, message.getGroupChatID(), message.getMessage(), message.getFromUserID(), message.getToUserID(), message.getSendDate(), message.getReadDate() == null ? LocalDate.now() : message.getReadDate());
     }
 
 
-    private RowMapper<Chat> mapChatWithDB() {
+    private RowMapper<Message> mapChatWithDB() {
         return (resultSet, i) -> {
-            return new Chat(
+            return new Message(
                     resultSet.getInt("id"),
                     resultSet.getInt("group_chat_id"),
                     resultSet.getString("message_text"),
                     resultSet.getInt("from_user_id"),
+                    resultSet.getInt("to_user_id"),
                     resultSet.getDate("send_date").toLocalDate(),
                     resultSet.getDate("read_date").toLocalDate()
             );
