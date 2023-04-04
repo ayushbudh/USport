@@ -14,6 +14,8 @@ import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { useNavigate } from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import { useAuth } from '../../contexts/AuthContext';
+import { CircularProgress } from '@mui/material';
+import LoginIcon from '@mui/icons-material/Login';
 
 const theme = createTheme({
     palette: {
@@ -28,16 +30,20 @@ const Signin = () => {
   const navigate = useNavigate();
   const [errormsg, setErrorMsg] = useState("");
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { signInUser } = useAuth();
 
   const handleSubmit = async (event) => {
+    setLoading(true);
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     try{
       await signInUser(formData.get('email'), formData.get('password'));
+      setLoading(false);
       navigate('/home');
     }catch(error){
         const errorMessage = error.message;
+        setLoading(false);
         setError(true);
         setErrorMsg(errorMessage);
     }
@@ -135,7 +141,9 @@ const Signin = () => {
                 variant="contained"
                 fullWidth
                 color="primary"
+                disabled={loading}
                 sx={{ mt: 3, mb: 2 }}
+                startIcon={loading ? <CircularProgress size={21} color='inherit'/> : <LoginIcon/>}
               >
                 Sign in
               </Button>
