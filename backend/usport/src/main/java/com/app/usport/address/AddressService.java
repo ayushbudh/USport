@@ -1,13 +1,23 @@
 package com.app.usport.address;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AddressService {
 
     ArrayList<Address> addresses;
+
+    @Autowired
+    private AddressRepository addressRepository;
+
+    @Autowired
+    public AddressRepository getAddressRepository() {
+        return addressRepository;
+    }
 
     public AddressService()
     {
@@ -31,11 +41,11 @@ public class AddressService {
     }
 
     public Address getAddress(int addressID) {
-        for (Address address : addresses) {
-            if (address.getAddressID() == addressID) {
-                return address;
-            }
-        }
-        return null;
+        return addressRepository.getAddress(addressID);
+    }
+
+    public List<Address> getSimilarAddress(String streetName)
+    {
+        return addressRepository.getSimilarAddress(streetName);
     }
 }
