@@ -18,19 +18,17 @@ public class FieldController {
         this.fieldService = fieldService;
     }
 
-    @GetMapping("/all")
-    public List<Field> list(){return fieldService.getAllFields();}
+    @GetMapping("")
+    public List<Field> list(){ return fieldService.getAllFields(); }
 
-    @PostMapping("/Create")
-        public String add(@RequestBody Field field) {
-            fieldService.createField(field);
-            return "field created";
-        }
+    @PostMapping("/create")
+    public void add(@RequestBody Field field) {
+        fieldService.createField(field);
+    }
 
-    @GetMapping("/getField")
-        public Field uniqueField(@RequestParam int id)
-        {
-            return fieldService.getField(id);
-        }
-
+    @GetMapping(path = "/{id}")
+    public Field getField(
+            @PathVariable("id") String id){
+        return fieldService.getField(id);
+    }
 }

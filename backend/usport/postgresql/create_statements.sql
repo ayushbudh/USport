@@ -44,6 +44,7 @@ CREATE TABLE field_address(
 
 CREATE TABLE field(
 	id serial PRIMARY KEY,
+	name VARCHAR (100) NOT NUll,
 	address_id int NOT NULL,
 	length int NOT NULL,
 	width int NOT NULL,

@@ -1,5 +1,6 @@
 package com.app.usport.notification;
 
+import com.app.usport.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,18 +20,21 @@ public class NotificationRepository {
     }
 
     List<Notification> getUserNotifications(String userId){
-        if(userId.length() == 0) return new ArrayList<Notification>();
-        String digitsRegex = "[0-9]+";
-        Pattern digitsPattern = Pattern.compile(digitsRegex);
-        Matcher digitsMatcher = digitsPattern.matcher(userId);
-        if(!digitsMatcher.matches()) return new ArrayList<Notification>();
-        String sql = "SELECT * FROM notification WHERE to_user_id=" + String.valueOf(userId);
-        List<Notification> result = jdbcTemplate.query(sql, mapNotificationFromDb());
-        if(result.size() == 0) return new ArrayList<Notification>();
-        return result;
+        if(userId.length() == 0) throw new ApiRequestException("Enter a valid user id");
+        try{
+            String digitsRegex = "[0-9]+";
+            Pattern digitsPattern = Pattern.compile(digitsRegex);
+            Matcher digitsMatcher = digitsPattern.matcher(userId);
+            if(!digitsMatcher.matches()) throw new ApiRequestException("Enter a valid user id");
+            String sql = "SELECT * FROM notification WHERE to_user_id=" + String.valueOf(userId);
+            List<Notification> result = jdbcTemplate.query(sql, mapNotificationFromDb());
+            return result;
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
     }
 
-    public boolean createNotification(Notification notification){
+    public void createNotification(Notification notification){
         // check if user exists
         String sql1 = "SELECT EXISTS(SELECT * from user_account WHERE id=" + String.valueOf(notification.getFromUserId()) + ") as user_exists;";
         String sql2 = "SELECT EXISTS(SELECT * from user_account WHERE id=" + String.valueOf(notification.getToUserId()) + ") as user_exists;";
@@ -38,9 +42,10 @@ public class NotificationRepository {
         try{
             List<Boolean> result1 = jdbcTemplate.query(sql1, new Object[]{}, (resultSet, i) -> { return resultSet.getBoolean("user_exists");} );
             List<Boolean> result2 = jdbcTemplate.query(sql2, new Object[]{}, (resultSet, i) -> { return resultSet.getBoolean("user_exists");} );
-            if(result1.get(0) == false || result2.get(0) == false) return false;
+            if(result1.get(0) == false) throw new ApiRequestException( notification.getFromUserId() + " doesn't exists");
+            if(result2.get(0) == false) throw new ApiRequestException( notification.getToUserId() + " doesn't exists");
         }catch (Exception e){
-            return false;
+            throw new ApiRequestException(e.toString());
         }
         // insert data
         String sql3 = "INSERT INTO notification " +
@@ -55,9 +60,8 @@ public class NotificationRepository {
         try{
             jdbcTemplate.update(sql3);
         }catch (Exception e){
-            return false;
+            throw new ApiRequestException(e.toString());
         }
-        return true;
     }
 
     private RowMapper<Notification> mapNotificationFromDb() {

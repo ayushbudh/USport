@@ -1,7 +1,7 @@
-package com.app.usport.address;
+package com.app.usport.fieldaddress;
 
-public class Address {
-    private int addressID;
+public class FieldAddress {
+    private int id;
     private String streetAddress;
     private String city;
     private String state;
@@ -9,9 +9,9 @@ public class Address {
     private String country;
 
 
-    public Address(int addressID, String streetAddress, String city, String state, int zipCode, String country)
+    public FieldAddress(int id, String streetAddress, String city, String state, int zipCode, String country)
     {
-        this.addressID = addressID;
+        this.id = id;
         this.streetAddress= streetAddress;
         this.city = city;
         this.state = state;
@@ -19,12 +19,12 @@ public class Address {
         this.country = country;
     }
 
-    public void setAddressID(int addressID) {
-        this.addressID = addressID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getAddressID() {
-        return addressID;
+    public int getId() {
+        return id;
     }
 
     public void setStreetAddress(String streetAddress)

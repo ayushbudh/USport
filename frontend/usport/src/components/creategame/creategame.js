@@ -10,8 +10,8 @@ const CreateGame = () => {
         <>
             <Navbar authenticated={true}/>
             {page === 1 ? <FieldInformation setCurrentPage={setCurrentPage}/> 
-            : page === 2 ? <Create  setCurrentPage={setCurrentPage}/> 
-            : <CreateStatus  setCurrentPage={setCurrentPage}/>}
+            : page === 2 ? <Create setCurrentPage={setCurrentPage}/> 
+            : <CreateStatus setCurrentPage={setCurrentPage}/>}
         </>
     );
 }

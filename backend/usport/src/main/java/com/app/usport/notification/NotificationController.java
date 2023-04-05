@@ -1,5 +1,6 @@
 package com.app.usport.notification;
 
+import com.app.usport.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.util.MultiValueMap;
@@ -20,13 +21,12 @@ public class NotificationController {
 
     @GetMapping("")
     public List<Notification> list(@RequestParam(value = "userId", defaultValue = "-1") String userId){
-        if(userId.equals("-1")) return new ArrayList<Notification>();
+        if(userId.equals("-1")) throw new ApiRequestException("No request parameter \"userId\" passed!");
         return notificationService.getUserNotifications(userId);
     }
 
     @PostMapping("/create")
-    public String add(@RequestBody Notification notification){
-        if(notificationService.createNotification(notification)) return "Notification created!";
-        return "Notification couldn't be created!";
+    public void add(@RequestBody Notification notification){
+        notificationService.createNotification(notification);
     }
 }

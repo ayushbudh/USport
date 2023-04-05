@@ -14,16 +14,6 @@ public class UserAccount {
     private boolean isSocialAccount;
     private Blob profileImg;
 
-    public UserAccount(){
-        this.id = 0;
-        this.uid = "";
-        this.firstName = "";
-        this.lastName = "";
-        this.email = "";
-        this.age = 0;
-        this.isSocialAccount = false;
-    }
-
     public UserAccount(int id,
                        @JsonProperty("uid") String uid,
                        @JsonProperty("first_name") String firstName,
