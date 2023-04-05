@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import fieldService from '../../services/FieldService';
 import fieldAddressService from '../../services/FieldAddressService';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import ListItemIcon from '@mui/material/ListItemIcon';
 
 const Play = () => {
     const navigate = useNavigate();
@@ -24,17 +26,20 @@ const Play = () => {
 
     const renderFields = (props) => {
         const { index, style, data } = props;
-        const handleListItemOnClick = () => {
+        const handleListItemOnClick = (fieldData) => {
             // TODO: Find an alternative
             // Use to navigate to new route
-            data.navigate("/creategame");
+            data.navigate("/creategame", { state: { fieldData: fieldData } });
         }
     
         return (
           <ListItem style={style} key={index} component="div" disablePadding>
-            <ListItemButton onClick={handleListItemOnClick}>
+            <ListItemButton onClick={() => handleListItemOnClick(field[index])}>
+            <ListItemIcon>
+                <LocationOnIcon />
+              </ListItemIcon>
                 {!loading && <ListItemText  primary={`${field[index]["name"]}`} 
-                secondary={`Address: ${field[index]["address"]["streetAddress"]}, ${field[index]["address"]["city"]},
+                secondary={`${field[index]["address"]["streetAddress"]}, ${field[index]["address"]["city"]},
                  ${field[index]["address"]["state"]}, ${field[index]["address"]["zipCode"]}, ${field[index]["address"]["country"]}`}/>}
             </ListItemButton>
           </ListItem>
