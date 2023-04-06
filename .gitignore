@@ -1,23 +1,60 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-usport/node_modules
-usport/.pnp
-usport/.pnp.js
+frontend/usport/node_modules
+frontend/usport/.pnp
+frontend/usport/.pnp.js
 
 # testing
-usport/coverage
+frontend/usport/coverage
 
 # production
-usport/build
+frontend/usport/build
 
 # misc
-usport/.DS_Store
-usport/.env.local
-usport/.env.development.local
-usport/.env.test.local
-usport/.env.production.local
+frontend/usport/.DS_Store
+frontend/usport/.env
+frontend/usport/.env.local
+frontend/usport/.env.development.local
+frontend/usport/.env.test.local
+frontend/usport/.env.production.local
 
-usport/npm-debug.log*
-usport/yarn-debug.log*
-usport/yarn-error.log*
+
+frontend/usport/npm-debug.log*
+frontend/usport/yarn-debug.log*
+frontend/usport/yarn-error.log*
+
+
+backend/usport/HELP.md
+backend/usport/target/
+backend/usport/!.mvn/wrapper/maven-wrapper.jar
+backend/usport/!**/src/main/**/target/
+backend/usport/!**/src/test/**/target/
+
+### STS ###
+backend/usport/.apt_generated
+backend/usport/.classpath
+backend/usport/.factorypath
+backend/usport/.project
+backend/usport/.settings
+backend/usport/.springBeans
+backend/usport/.sts4-cache
+
+### IntelliJ IDEA ###
+backend/usport/.idea
+backend/usport/*.iws
+backend/usport/*.iml
+backend/usport/*.ipr
+
+### NetBeans ###
+backend/usport/nbproject/private/
+backend/usport/nbbuild/
+backend/usport/dist/
+backend/usport/nbdist/
+backend/usport/.nb-gradle/
+backend/usport/build/
+backend/usport/!**/src/main/**/build/
+backend/usport/!**/src/test/**/build/
+
+### VS Code ###
+backend/usport/.vscode/

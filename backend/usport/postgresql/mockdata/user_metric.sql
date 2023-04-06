@@ -1,0 +1,3 @@
+insert into user_metric (user_id, rating, bio, levelofexpertise) values (1, 74, 'Operative transitional implementation', 'Donec quis orci eget orci vehicula.');
+insert into user_metric (user_id, rating, bio, levelofexpertise) values (2, 18, 'Adaptive explicit success', 'Quisque ut erat. Curabitur gravida nisi at nibh.');
+insert into user_metric (user_id, rating, bio, levelofexpertise) values (3, 58, 'Function-based didactic archive', 'Duis ac nibh. Fusce lacus purus, aliquet at.');
