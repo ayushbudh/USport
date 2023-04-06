@@ -1,12 +1,10 @@
-# Usport
-
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/CSC-4350-TR-SP2023/Team15/">
     <img src="https://i.imgur.com/vmoVu2Z.png" alt="Logo" 
     width="290" height="200">
   </a>
 
-  <h3 align="center">USport</h3>
+  <h1 align="center">USport</h1>
 
   <p align="center">
     A platform to connect sports players with other players and trainers to play different sports.
@@ -23,7 +21,7 @@
 ## Table of contents
 * [Introduction](#introduction)
 * [Tech Stack](#tech-stack)
-* [Assumptions & Data Interpretation](#assumptions-&-data-interpretation)
+* [Assumptions & Data Interpretation](#assumptions--data-interpretation)
 * [Links](#links)
 
 ## Introduction
