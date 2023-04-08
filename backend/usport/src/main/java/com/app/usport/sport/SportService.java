@@ -20,4 +20,8 @@ public class SportService {
     public Sport getSport(String id) {
         return sportRepository.getSport(id);
     }
+
+    public List<Sport> getSportsForField(String fieldId){
+        return sportRepository.getSportsForField(fieldId);
+    }
 }

@@ -61,8 +61,9 @@ const Connect = () => {
 
     const searchQueryFilter = (query) => {
         userAccountService.searchUser(query).then((userAccounts) => {
-            setUserData(userAccounts.data);
-            setUserCount(userAccounts.data.length);
+            const filteredUserAccounts = userAccounts.data.filter( (useraccount) => useraccount.id !== currentUserId);
+            setUserData(filteredUserAccounts);
+            setUserCount(filteredUserAccounts.length);
         });
     }
     
