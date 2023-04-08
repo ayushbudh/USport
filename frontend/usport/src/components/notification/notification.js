@@ -12,17 +12,17 @@ import Navbar from '../navbar/navbar';
 import notificationService from '../../services/NotificationService';
 import Skeleton from '@mui/material/Skeleton';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Notification = () => {
 
     const [notifications, setNotifications] = useState([]);
     const [upcomingGamesNotifications, setUpcomingGamesNotifications] = useState([]);
     const [loading, setLoading] = useState(true);
-    // TODO: Remove userId when the authentication is implemented
-    const userId = 5;
+    const { currentUserId } = useAuth();
 
     useEffect(() => {
-        notificationService.getUserNotifications(userId)
+        notificationService.getUserNotifications(currentUserId)
         .then((notifications) => {
             if(notifications.data.length === 0){
               setLoading(false);
@@ -32,7 +32,7 @@ const Notification = () => {
             setUpcomingGamesNotifications(notifications.data.filter((x) => x.is_upcoming_game === true));
             setLoading(false);
         });
-    }, []);
+    }, [currentUserId]);
 
     const renderNotifications = (props) => {
       const { index, style } = props;

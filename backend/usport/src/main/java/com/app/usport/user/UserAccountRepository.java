@@ -1,5 +1,6 @@
 package com.app.usport.user;
 
+import com.app.usport.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,32 +20,43 @@ public class UserAccountRepository {
     }
 
     List<UserAccount> getAll() {
-        String sql = "SELECT * FROM user_account;";
-        return jdbcTemplate.query(sql, mapPlayerFomDb());
+        try{
+            String sql = "SELECT * FROM user_account;";
+            List<UserAccount> result = jdbcTemplate.query(sql, mapPlayerFomDb());
+            return result;
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
     }
 
     UserAccount getUser(String uid){
-        String sql = "SELECT * FROM user_account WHERE uid=\'" + uid + "\';";
-        List<UserAccount> result = jdbcTemplate.query(sql, mapPlayerFomDb());
-        if (result.size() == 0) return new UserAccount();
-        return result.get(0);
+        try{
+            String sql = "SELECT * FROM user_account WHERE uid=\'" + uid + "\';";
+            List<UserAccount> result = jdbcTemplate.query(sql, mapPlayerFomDb());
+            return result.get(0);
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
     }
 
     List<UserAccount> searchUser(String query){
-        query = query.trim();
-        if(query.length() == 0) return getAll();
-        StringBuilder pattern = new StringBuilder();
-        pattern.append(query.substring(0,1).toUpperCase());
-        pattern.append(query.substring(1).toLowerCase());
-        String sql = "SELECT * FROM user_account WHERE first_name LIKE '" + pattern + "%'" +
-                " OR " + "last_name LIKE '" + pattern + "%';";
-        List<UserAccount> result = jdbcTemplate.query(sql, mapPlayerFomDb());
-        if (result.size() == 0) return new ArrayList<UserAccount>();
-        return result;
+        try{
+            query = query.trim();
+            if(query.length() == 0) return getAll();
+            StringBuilder pattern = new StringBuilder();
+            pattern.append(query.substring(0,1).toUpperCase());
+            pattern.append(query.substring(1).toLowerCase());
+            String sql = "SELECT * FROM user_account WHERE first_name LIKE '" + pattern + "%'" +
+                    " OR " + "last_name LIKE '" + pattern + "%';";
+            List<UserAccount> result = jdbcTemplate.query(sql, mapPlayerFomDb());
+            return result;
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
     }
 
 
-    public boolean createUserAccount(UserAccount userAccount){
+    public void createUserAccount(UserAccount userAccount){
         // insert data
         String sql = "INSERT INTO user_account " +
                 "(uid, first_name, last_name, email, " +
@@ -58,9 +70,8 @@ public class UserAccountRepository {
         try{
             jdbcTemplate.update(sql);
         }catch (Exception e){
-            return false;
+            throw new ApiRequestException(e.toString());
         }
-        return true;
     }
 
     private RowMapper<UserAccount> mapPlayerFomDb() {

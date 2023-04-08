@@ -1,7 +1,7 @@
 package com.app.usport.field;
 
+import com.app.usport.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -21,33 +21,45 @@ public class FieldRepository {
 
     // Add this method to check if the address ID exists
     public boolean addressExists(int addressId) {
-        String sql = "SELECT COUNT(*) FROM public.field_address WHERE id = ?";
-        int count = jdbcTemplate.queryForObject(sql, Integer.class, addressId);
-        return count > 0;
+        try{
+            String sql = "SELECT COUNT(*) FROM public.field_address WHERE id = ?";
+            int count = jdbcTemplate.queryForObject(sql, Integer.class, addressId);
+            return count > 0;
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
     }
 
     // Update this method to use the addressExists method
     public void createField(Field field) {
         if (!addressExists(field.getAddressId())) {
-            throw new IllegalArgumentException("Invalid address ID: " + field.getAddressId());
+            throw new ApiRequestException("Invalid address ID: " + field.getAddressId());
         }
         String sql = "INSERT INTO public.field (address_id, length, width, minimumplayers, trainers_available) " +
                 "VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, field.getAddressId(), field.getFieldHeight(), field.getFieldWidth(), field.getMinimumPlayers(), field.isTrainersAvailable());
+        try{
+            jdbcTemplate.update(sql, field.getAddressId(), field.getLength(), field.getWidth(), field.getMinimumPlayers(), field.isTrainersAvailable());
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
     }
 
-
-    //public Field(int fieldID, int fieldHeight, int fieldWidth, int minimumPlayers, boolean trainersAvailable)
     public List<Field> getAllFields() {
-        String sql = "SELECT * FROM field;";
-        return jdbcTemplate.query(sql, mapFieldWithDB());
+        try{
+            String sql = "SELECT * FROM field;";
+            List<Field> result = jdbcTemplate.query(sql, mapFieldWithDB());
+            return result;
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
     }
-    public Field getField(int id) {
-        String sql = "SELECT * FROM public.field WHERE id = ?";
-        try {
-            return jdbcTemplate.queryForObject(sql, new Object[]{id}, mapFieldWithDB());
-        } catch (EmptyResultDataAccessException e) {
-            return null;
+    public Field getField(String id) {
+        try{
+            String sql = "SELECT * FROM field WHERE id=" + String.valueOf(id);
+            List<Field> result = jdbcTemplate.query(sql, mapFieldWithDB());
+            return result.get(0);
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
         }
     }
 
@@ -55,6 +67,7 @@ public class FieldRepository {
         return (resultSet, i) -> {
             return new Field(
                     resultSet.getInt("id"),
+                    resultSet.getString("name"),
                     resultSet.getInt("address_id"),
                     resultSet.getInt("length"),
                     resultSet.getInt("width"),

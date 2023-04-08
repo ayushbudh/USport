@@ -1,48 +1,63 @@
 package com.app.usport.field;
 
 public class Field {
-    private int fieldID;
-    private int fieldHeight;
-    private int fieldWidth;
+    private int id;
+    private String name;
+    private int addressId;
+    private int length;
+    private int width;
     private int minimumPlayers;
     private boolean trainersAvailable;
-    private int addressId;
 
-    public Field(int fieldID, int addressId ,int fieldHeight, int fieldWidth, int minimumPlayers, boolean trainersAvailable) {
-        this.fieldID = fieldID;
-        this.fieldHeight = fieldHeight;
-        this.fieldWidth = fieldWidth;
+    public Field(){
+        this.id = 0;
+        this.name = "";
+        this.addressId = 0;
+        this.length = 0;
+        this.width = 0;
+        this.minimumPlayers = 0;
+        this.trainersAvailable = false;
+    }
+    public Field(int id, String name, int addressId ,int length,
+                 int width, int minimumPlayers, boolean trainersAvailable) {
+        this.id = id;
+        this.name = name;
+        this.addressId = addressId;
+        this.length = length;
+        this.width = width;
         this.minimumPlayers = minimumPlayers;
         this.trainersAvailable = trainersAvailable;
-        this.addressId = addressId;
     }
 
-    public int getFieldID() {
-        return fieldID;
+    public int getId() {
+        return this.id;
     }
 
-    public void setFieldID(int fieldID) {
-        this.fieldID = fieldID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getFieldHeight() {
-        return fieldHeight;
+    public String getName() { return this.name; }
+    public void setName(String name) { this.name = name;}
+
+    public int getLength() {
+        return this.length;
     }
 
-    public void setFieldHeight(int fieldHeight) {
-        this.fieldHeight = fieldHeight;
+    public void setLength(int length) {
+        this.length = length;
     }
 
-    public int getFieldWidth() {
-        return fieldWidth;
+    public int getWidth() {
+        return this.width;
     }
 
-    public void setFieldWidth(int fieldWidth) {
-        this.fieldWidth = fieldWidth;
+    public void setWidth(int width) {
+        this.width = width;
     }
 
     public int getMinimumPlayers() {
-        return minimumPlayers;
+        return this.minimumPlayers;
     }
 
     public void setMinimumPlayers(int minimumPlayers) {
@@ -50,14 +65,14 @@ public class Field {
     }
 
     public boolean isTrainersAvailable() {
-        return trainersAvailable;
+        return this.trainersAvailable;
     }
 
     public void setTrainersAvailable(boolean trainersAvailable) {
         this.trainersAvailable = trainersAvailable;
     }
     public int getAddressId() {
-        return addressId;
+        return this.addressId;
     }
 
     public void setAddressId(int addressId) {

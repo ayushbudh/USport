@@ -1,6 +1,6 @@
 package com.app.usport.field;
 
-import com.app.usport.address.AddressService;
+import com.app.usport.fieldaddress.FieldAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,20 +9,17 @@ import java.util.List;
 
 @Service
 public class FieldService {
-    private ArrayList<Field> fields;
-    private final AddressService addressService;
+    private final FieldAddressService fieldAddressService;
 
     @Autowired // Injects a FieldRepository bean into this field
     private FieldRepository fieldRepository;
 
-    public FieldService(AddressService addressService) {
-        fields = new ArrayList<>();
-        this.addressService = addressService;
+    public FieldService(FieldAddressService fieldAddressService) {
+        this.fieldAddressService = fieldAddressService;
     }
 
-    public Field createField(Field field) {
+    public void createField(Field field) {
         fieldRepository.createField(field);
-        return field;
     }
 
     public List<Field> getAllFields() {
@@ -30,7 +27,7 @@ public class FieldService {
         return fieldRepository.getAllFields();
     }
 
-    public Field getField(int id) {
+    public Field getField(String id) {
         return fieldRepository.getField(id);
     }
 }

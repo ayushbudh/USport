@@ -23,7 +23,7 @@ public class UserAccountService {
         return userAccountRepository.searchUser(query);
     }
 
-    public boolean createUserAccount(UserAccount userAccount){
-        return this.userAccountRepository.createUserAccount(userAccount);
+    public void createUserAccount(UserAccount userAccount){
+        this.userAccountRepository.createUserAccount(userAccount);
     }
 }

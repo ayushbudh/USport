@@ -21,7 +21,6 @@ public class UserAccountController {
         return userAccountService.getAllUsers();
     }
 
-    // TODO: Redo this with a better approach for non-existing user accounts
     @GetMapping(path = "/{uid}")
     public UserAccount getUser(
             @PathVariable("uid") String uid) {
@@ -34,8 +33,7 @@ public class UserAccountController {
     }
 
     @PostMapping("/create")
-    public String add(@RequestBody UserAccount userAccount){
-        if(userAccountService.createUserAccount(userAccount)) return "User account created!";
-        return "User account couldn't be created!";
+    public void add(@RequestBody UserAccount userAccount){
+        userAccountService.createUserAccount(userAccount);
     }
 }

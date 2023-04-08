@@ -24,7 +24,8 @@ const Connect = () => {
     const { currentUserId } = useAuth();
 
     useEffect(() => {
-        userAccountService.getUserAccounts().then((userAccounts) => {
+        userAccountService.getUserAccounts()
+        .then((userAccounts) => {
             const filteredUserAccounts = userAccounts.data.filter( (useraccount) => useraccount.id !== currentUserId);
             setUserData(filteredUserAccounts);
             setUserCount(filteredUserAccounts.length);  

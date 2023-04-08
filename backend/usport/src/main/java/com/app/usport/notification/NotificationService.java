@@ -17,8 +17,8 @@ public class NotificationService {
         return this.notificationRepository.getUserNotifications(userId);
     }
 
-    public boolean createNotification(Notification notification){
-        return this.notificationRepository.createNotification(notification);
+    public void createNotification(Notification notification){
+        this.notificationRepository.createNotification(notification);
     }
 
 }

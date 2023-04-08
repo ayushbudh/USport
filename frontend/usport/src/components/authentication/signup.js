@@ -15,6 +15,8 @@ import { useNavigate } from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import { useAuth } from '../../contexts/AuthContext';
 import userAccountService from '../../services/UserAccountService';
+import LoginIcon from '@mui/icons-material/Login';
+import { CircularProgress } from '@mui/material';
 
 const theme = createTheme({
     palette: {
@@ -29,9 +31,11 @@ const Signup = () => {
   const navigate = useNavigate();
   const [errormsg, setErrorMsg] = useState("");
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { signupUser } = useAuth();
 
   const handleSubmit = async (event) => {
+    setLoading(true);
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     try{
@@ -40,14 +44,17 @@ const Signup = () => {
         try{
           await userAccountService.addUser(user.uid, formData.get("firstName"), 
               formData.get("lastName"), formData.get("email"), 19, false);
+          setLoading(false);
           navigate('/home');
         }catch(error){
           const errorMessage = error.message;
+          setLoading(false);
           setError(true);
           setErrorMsg(errorMessage);
         }
     }catch(error){
         const errorMessage = error.message;
+        setLoading(false);
         setError(true);
         setErrorMsg(errorMessage);
     }
@@ -152,6 +159,8 @@ const Signup = () => {
                 fullWidth
                 color="primary"
                 sx={{ mt: 3, mb: 2 }}
+                disabled={loading}
+                startIcon={loading ? <CircularProgress size={21} color='inherit'/> : <LoginIcon/>}
               >
                 Sign Up
               </Button>
