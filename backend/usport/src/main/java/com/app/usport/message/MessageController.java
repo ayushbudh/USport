@@ -1,33 +1,36 @@
 package com.app.usport.message;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-//import org.springframework.messaging.handler.annotation.MessageMapping;
-import java.util.List;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/chat")
-@CrossOrigin
 public class MessageController {
 
+    private final SimpMessagingTemplate messagingTemplate;
     private final MessageService messageService;
+
+    // This is only for testing replace with a suitable default value when integrating with rest of app
+    private static final int DEFAULT_GROUP_CHAT_ID = 123;
+
     @Autowired
-    public MessageController(MessageService messageService) {
+    public MessageController(SimpMessagingTemplate messagingTemplate, MessageService messageService) {
+        this.messagingTemplate = messagingTemplate;
         this.messageService = messageService;
     }
 
-    //TODO need to change the senddate to MessageMapping and to make it show proper send time for the message
-    @PostMapping("/send")
-    public String sendMessage(@RequestBody Message message) {
+    @MessageMapping("/chat")
+    public void sendMessage(@Payload Message message) {
+//        System.out.println("Received message: " + message.getMessage() + " from " + message.getFromUserID());
+        int groupChatId = message.getGroupChatID() != 0 ? message.getGroupChatID() : DEFAULT_GROUP_CHAT_ID;
+        message.setToUserID(2);
         messageService.sendMessage(message);
-        return "Message sent successfully";
+        messagingTemplate.convertAndSend("/topic/messages/" + groupChatId, message);
     }
-
-    //Call this to see all the messages that have been sent for testing purposes.
-    @GetMapping("/recieve")
-    public List<Message> getMessages()
-    {
-        return messageService.getAllMessages();
-    }
-
 }
