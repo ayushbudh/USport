@@ -65,7 +65,7 @@ CREATE TABLE game (
 	id serial PRIMARY KEY,
 	sport_id int NOT NULL,
 	field_id int NOT NULL,
-	reservation_date tstzrange NOT NULL,
+	reservation_datetime tstzrange NOT NULL,
 	FOREIGN KEY(sport_id) REFERENCES sport(id),
 	FOREIGN KEY(field_id) REFERENCES field(id)
 );
