@@ -36,6 +36,18 @@ public class SportRepository {
         }
     }
 
+    List<Sport> getSportsForField(String fieldId){
+        try{
+            String sql = "SELECT s.id, s.sport_name, s.sport_type, s.sport_kind" +
+                    "        FROM are_available aa, sport s" +
+                    "        WHERE aa.sport_id=s.id AND aa.field_id=" + fieldId + ";";
+            List<Sport> result = jdbcTemplate.query(sql, mapSportFromDb());
+            return result;
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
+    }
+
     private RowMapper<Sport> mapSportFromDb() {
         return (resultSet, i) -> {
             return new Sport(

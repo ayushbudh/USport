@@ -46,6 +46,8 @@ backend/usport/*.iws
 backend/usport/*.iml
 backend/usport/*.ipr
 
+.idea/
+
 ### NetBeans ###
 backend/usport/nbproject/private/
 backend/usport/nbbuild/

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -13,6 +12,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import fieldService from '../../services/FieldService';
+import sporService from '../../services/SportService';
 import fieldAddressService from '../../services/FieldAddressService';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -48,6 +48,7 @@ const Play = () => {
 
     useEffect(() => {
         setLoading(true);
+        // TODO: Replace this approach with SQL Join query
         fieldService.getFields()
         .then((fields) => {
             fieldAddressService.getFieldAddresses()
@@ -61,6 +62,15 @@ const Play = () => {
                     }else{
                         field['address'] = null;
                     }
+
+                    sporService.getSportsForField(field.id)
+                    .then((sports) => {
+                        field['sports'] = sports.data;
+                    })
+                    .catch((error) => {
+                        setError(error);
+                    })
+                                                 
                     return field;
                 });
                 setField(fields.data);
@@ -97,35 +107,25 @@ const Play = () => {
                     placeholder="Search nearby play grounds..."
                     inputProps={{ 'aria-label': 'search nearby play grounds' }}
                 />
-                <IconButton sx={{ p: '10px' }} aria-label="directions">
-                    <FilterAltIcon />
-                </IconButton>
                 </Box>
             </Grid>
-            <Grid item xs={5} sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end', mr: 2, ml: 2}}>
-                <Box
-                component="img"
-                src="https://i.imgur.com/TAIct0v.png"
-                height={300}/>
-
-            </Grid>
-            <Grid item xs={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mt: 5}}>
+            <Grid item xs={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <Box sx={{ backgroundColor: '#F8F4F4', p: 3, borderRadius: 5}}>
                 {loading ? 
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 180,
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
                         width: 500 }}>
                         <CircularProgress />
                         <Typography sx={{ ml: 2}}>Fetching fields...</Typography>
                     </Box>
                     :
                     fieldCount === 0 ? 
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 180,
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
                         width: 500 }}>
                         No Fields
                     </Box>
                     :
                     <FixedSizeList
-                        height={180}
+                        height={400}
                         width={500}
                         itemSize={80}
                         itemCount={fieldCount}
