@@ -30,6 +30,20 @@ public class CanHaveRepository {
         }
     }
 
+    public void addUserSport(CanHave canHave){
+        // insert data
+        String sql = "INSERT INTO can_have " +
+                "(user_metric_id, skill_id) VALUES " +
+                "(" + canHave.getUserMetricId() + ", "
+                + canHave.getSkillId() + ");";
+
+        try{
+            jdbcTemplate.update(sql);
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
+    }
+
     private RowMapper<CanHave> mapCanHaveFromDb() {
         return (resultSet, i) -> {
             return new CanHave(

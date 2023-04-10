@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/sport")
@@ -18,16 +19,24 @@ public class SportController {
     }
 
     @GetMapping("")
-    public List<Sport> list(@RequestParam(value = "fieldId", defaultValue = "") String fieldId){
-        if(fieldId.equals("")){
-            return sportService.getAllSports();
+    public List<Sport> list(@RequestParam Map<String, String> params){
+        if(params.get("fieldId") != null){
+            return sportService.getSportsForField(params.get("fieldId"));
         }
-        return sportService.getSportsForField(fieldId);
+        if(params.get("userMetricId") != null){
+            return sportService.getSportsForUserMetric(params.get("userMetricId"));
+        }
+        return sportService.getAllSports();
     }
 
     @GetMapping(path = "/{id}")
-    public Sport getUser(
+    public Sport getSport(
             @PathVariable("id") String id) {
         return sportService.getSport(id);
+    }
+
+    @GetMapping(path = "/{userMetricId}")
+    public List<Sport> getSportsForUserMetric(@PathVariable("userMetricId") String userMetricId){
+        return sportService.getSportsForUserMetric(userMetricId);
     }
 }

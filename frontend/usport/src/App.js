@@ -12,6 +12,7 @@ import CreateGame from './components/creategame/creategame';
 import { AuthProvider } from './contexts/AuthContext';
 import {PrivateRoute, PublicRouteRollback} from "./ProtectedRoute"
 import CreateStatus from './components/creategame/createstatus';
+import SetupProfile from './components/profile/setupprofile';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route exact path="/home" element={<PrivateRoute><Home/></PrivateRoute>} />
             <Route exact path="/chat" element={<PrivateRoute><Chat/></PrivateRoute>} />
             <Route exact path="/profile" element={<PrivateRoute><MyProfile/></PrivateRoute>} />
+            <Route exact path="/profilesetup" element={<PrivateRoute><SetupProfile/></PrivateRoute>} />
             <Route  exact path="/myaccount" element={<PrivateRoute><MyAccount/></PrivateRoute>} />
             <Route path="/" element={<PublicRouteRollback><Landing /></PublicRouteRollback>} />
             <Route path="/signup" element={<PublicRouteRollback><Signup /></PublicRouteRollback>} />

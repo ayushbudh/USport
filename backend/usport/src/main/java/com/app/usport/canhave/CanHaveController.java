@@ -23,5 +23,8 @@ public class CanHaveController {
         return canHaveService.getUserMetricSports(userMetricId);
     }
 
-    // TODO: Add post mapping for handling sport addition to user profile
+    @PostMapping("/add")
+    public void add(@RequestBody CanHave canHave){
+        canHaveService.addUserSport(canHave);
+    }
 }

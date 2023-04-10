@@ -34,7 +34,7 @@ export function AuthProvider({ children }) {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user);
       if(user != null){
-        userAccountService.getUserId(user.uid)
+        userAccountService.getUser(user.uid)
         .then((useraccount) => {
           setCurrentUserId(useraccount.data.id);
         })
@@ -54,6 +54,7 @@ export function AuthProvider({ children }) {
     signInUser,
     signupUser,
     logoutUser,
+    setCurrentUserId
   };
 
   return (

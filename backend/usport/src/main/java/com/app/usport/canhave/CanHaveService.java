@@ -17,4 +17,8 @@ public class CanHaveService {
     public List<CanHave> getUserMetricSports(String userMetricId) {
         return canHaveRepository.getUserMetricSports(userMetricId);
     }
+
+    public void addUserSport(CanHave canHave){
+        this.canHaveRepository.addUserSport(canHave);
+    }
 }

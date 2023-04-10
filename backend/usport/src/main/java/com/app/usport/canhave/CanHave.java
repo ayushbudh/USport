@@ -1,11 +1,15 @@
 package com.app.usport.canhave;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CanHave {
     private int id;
     private int userMetricId;
     private int skillId;
 
-    public CanHave(int id, int userMetricId, int skillId) {
+    public CanHave(int id,
+                   @JsonProperty("user_metric_id") int userMetricId,
+                   @JsonProperty("skill_id") int skillId) {
         this.id = id;
         this.userMetricId = userMetricId;
         this.skillId = skillId;

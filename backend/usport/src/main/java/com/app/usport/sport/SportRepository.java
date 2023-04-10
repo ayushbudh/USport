@@ -48,6 +48,18 @@ public class SportRepository {
         }
     }
 
+    List<Sport> getSportsForUserMetric(String userMetricId){
+        try{
+            String sql = "SELECT s.id, s.sport_name, s.sport_type, s.sport_kind " +
+                    "FROM can_have ch, sport s " +
+                    "WHERE ch.user_metric_id=" + userMetricId.trim() + " AND ch.skill_id=s.id;";
+            List<Sport> result = jdbcTemplate.query(sql, mapSportFromDb());
+            return result;
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
+    }
+
     private RowMapper<Sport> mapSportFromDb() {
         return (resultSet, i) -> {
             return new Sport(

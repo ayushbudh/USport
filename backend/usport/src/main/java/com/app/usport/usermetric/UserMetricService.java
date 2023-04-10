@@ -3,8 +3,6 @@ package com.app.usport.usermetric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 
 @Service
 public class UserMetricService {
@@ -16,5 +14,9 @@ public class UserMetricService {
 
     UserMetric getUserMetric(String userId) {
        return this.userMetricRepository.getUserMetric(userId);
+    }
+
+    public UserMetric createUserMetric(UserMetric userMetric){
+        return this.userMetricRepository.createUserMetric(userMetric);
     }
 }

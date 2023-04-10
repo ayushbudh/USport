@@ -1,6 +1,5 @@
 package com.app.usport.field;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,5 +29,9 @@ public class FieldController {
     public Field getField(
             @PathVariable("id") String id){
         return fieldService.getField(id);
+    }
+    @GetMapping("/search")
+    public List<Field> searchUser(@RequestParam(value = "query", defaultValue = "") String query) {
+        return fieldService.searchField(query);
     }
 }
