@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 
 const Ranking = () => {
     return(
-        <Box id="main" mt={11} pb={40}>
+        <Box id="main" mt={30} pb={55}>
             <Board></Board>
         </Box>
     );

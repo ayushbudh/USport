@@ -26,4 +26,8 @@ public class UserAccountService {
     public void createUserAccount(UserAccount userAccount){
         this.userAccountRepository.createUserAccount(userAccount);
     }
+
+    public UserAccount getUserById(int id) {
+        return userAccountRepository.getUserById(id);
+    }
 }

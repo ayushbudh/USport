@@ -39,6 +39,16 @@ public class UserAccountRepository {
         }
     }
 
+    public UserAccount getUserById(int id) {
+        try{
+            String sql = "SELECT * FROM user_account WHERE id=\'" + id + "\';";
+            List<UserAccount> result = jdbcTemplate.query(sql, mapPlayerFomDb());
+            return result.get(0);
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
+    }
+
     List<UserAccount> searchUser(String query){
         try{
             query = query.trim();

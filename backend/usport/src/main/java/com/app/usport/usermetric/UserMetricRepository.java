@@ -43,6 +43,12 @@ public class UserMetricRepository {
         }
     }
 
+    public List<UserMetric> getTopUserMetrics() {
+        String sql = "SELECT * FROM user_metric ORDER BY rating DESC LIMIT 15";
+        List<UserMetric> userMetrics = jdbcTemplate.query(sql, mapUserMetricFromDb());
+        return userMetrics;
+    }
+
     private RowMapper<UserMetric> mapUserMetricFromDb() {
         return (resultSet, i) -> {
             return new UserMetric(
@@ -54,4 +60,5 @@ public class UserMetricRepository {
             );
         };
     }
+
 }

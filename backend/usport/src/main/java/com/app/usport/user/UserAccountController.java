@@ -27,6 +27,12 @@ public class UserAccountController {
         return userAccountService.getUser(uid);
     }
 
+    @GetMapping(path = "/userById/{id}")
+    public UserAccount getUserById(
+            @PathVariable("id") int id) {
+        return userAccountService.getUserById(id);
+    }
+
     @GetMapping("/search")
     public List<UserAccount> searchUser(@RequestParam(value = "query", defaultValue = "") String query) {
         return userAccountService.searchUser(query);
