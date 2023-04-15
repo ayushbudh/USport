@@ -7,7 +7,11 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -26,11 +30,20 @@ public class MessageRepository {
         return jdbcTemplate.query(sql, mapChatWithDB());
     }
 
-    public void sendMessage(Message message) {
-        String sql = "INSERT INTO message (group_chat_id, message_text, from_user_id, to_user_id, send_date, read_date) VALUES (?, ?, ?, ?, ?, ?);";
-        jdbcTemplate.update(sql, message.getGroupChatID(), message.getMessage(), message.getFromUserID(), message.getToUserID(), message.getSendDate(), message.getReadDate() == null ? LocalDate.now() : message.getReadDate());
+    public List<Integer> getListOfChats(int currentUserId) {
+        String sql = "SELECT DISTINCT group_chat_id FROM message WHERE from_user_id = ?";
+        List<Integer> chatList = new ArrayList<>();
+        jdbcTemplate.query(sql, new Object[]{currentUserId}, (rs, rowNum) -> {
+            chatList.add(rs.getInt("group_chat_id"));
+            return null;
+        });
+        return chatList;
     }
 
+    public void sendMessage(Message message) {
+        String sql = "INSERT INTO message (group_chat_id, message_text, from_user_id, to_user_id, send_date) VALUES (?, ?, ?, ?, ?);";
+        jdbcTemplate.update(sql, message.getGroupChatID(), message.getMessage(), message.getFromUserID(), message.getToUserID(), message.getSendDate());
+    }
 
     private RowMapper<Message> mapChatWithDB() {
         return (resultSet, i) -> {
@@ -40,11 +53,11 @@ public class MessageRepository {
                     resultSet.getString("message_text"),
                     resultSet.getInt("from_user_id"),
                     resultSet.getInt("to_user_id"),
-                    resultSet.getDate("send_date").toLocalDate(),
-                    resultSet.getDate("read_date").toLocalDate()
+                    resultSet.getDate("send_date").toLocalDate()
             );
         };
     }
+
 
 
 }

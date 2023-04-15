@@ -62,5 +62,8 @@ public class MessageService {
         return uniqueMessages;
     }
 
+    public List<Integer> getListOfChats(int currentUserId) {
+        return messageRepository.getListOfChats(currentUserId);
+    }
 }
 

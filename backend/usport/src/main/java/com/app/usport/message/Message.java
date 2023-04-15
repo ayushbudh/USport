@@ -9,16 +9,14 @@ public class Message {
     private int fromUserID;
     private int toUserID;
     private LocalDate sendDate;
-    private LocalDate readDate;
 
-    public Message(int ChatID, int groupChatID, String message, int fromUserID, int toUserID, LocalDate sendDate, LocalDate readDate)
+    public Message(int ChatID, int groupChatID, String message, int fromUserID, int toUserID, LocalDate sendDate)
     {
         this.ChatID = ChatID;
         this.groupChatID = groupChatID;
         this.message = message;
         this.fromUserID = fromUserID;
         this.sendDate = sendDate;
-        this.readDate = readDate;
         this.toUserID = toUserID;
     }
 
@@ -72,11 +70,4 @@ public class Message {
         return sendDate;
     }
 
-    public void setReadDate(LocalDate readDate) {
-        this.readDate = readDate;
-    }
-
-    public LocalDate getReadDate() {
-        return readDate;
-    }
 }
