@@ -72,26 +72,26 @@ const Notification = () => {
             <Navbar authenticated={true}/>
             <Grid container mt={8} mb={4}>
                 <Grid item  xs={6}>
-                    <Typography sx={{textAlign: 'center'}} variant="h3">Notifications</Typography>
+                    <Typography sx={{textAlign: 'center', fontWeight: 'bolder'}} variant="h4">Notifications</Typography>
                 </Grid>
                 <Grid item  xs={6}>
-                    <Typography sx={{textAlign: 'center'}} variant="h3">Upcoming Games</Typography>
+                    <Typography sx={{textAlign: 'center', fontWeight: 'bolder'}} variant="h4">Upcoming Games</Typography>
                 </Grid>
                 <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', mt: 5}}>
-                    <Box sx={{ backgroundColor: '#F8F4F4', p: 5, borderRadius: 5}}>
+                    <Box sx={{ backgroundColor: '#F8F4F4', p: 5, borderRadius: 5, height: 350}}>
                         {loading ? 
-                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 350,
                           width: 500 }}>
                            <CircularProgress />
                          </Box>
                          :
                          notifications.length === 0 ? 
-                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 350,
                           width: 500 }}>
                            No Notifications
                          </Box>:
                          <FixedSizeList
-                         height={400}
+                         height={350}
                          width={500}
                          itemSize={70}
                          itemCount={notifications.length}
@@ -103,20 +103,20 @@ const Notification = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', mt: 5}}>
-                    <Box sx={{ backgroundColor: '#F8F4F4', p: 5, borderRadius: 5}}>
+                    <Box sx={{ backgroundColor: '#F8F4F4', p: 5, borderRadius: 5, height: 350}}>
                         {loading ? 
-                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 350,
                          width: 500 }}>
                           <CircularProgress />
                         </Box>
                          :
                          upcomingGamesNotifications.length === 0 ? 
-                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 350,
                           width: 500 }}>
                            No Upcoming Games
                          </Box>:
                          <FixedSizeList
-                            height={400}
+                            height={350}
                             width={500}
                             itemSize={70}
                             itemCount={upcomingGamesNotifications.length}

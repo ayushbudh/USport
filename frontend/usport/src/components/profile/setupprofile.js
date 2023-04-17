@@ -19,6 +19,7 @@ const SetupProfile = () => {
 
     const navigate = useNavigate();
     const [sports, setSports] = useState([]);
+    // TODO: Have to use Redux to fix this issue.
     const {currentUserId} = useAuth();
     const selectedSports = useRef([]);
     const [errormsg, setErrorMsg] = useState(null);
@@ -93,7 +94,7 @@ const SetupProfile = () => {
             fontWeight: 400,
             mb: 4
           }}>
-            Setup Profile {currentUserId === null ? "null" : currentUserId}
+            Setup Profile
           </Typography>
           {errormsg && <Alert severity="error">{errormsg}</Alert>}
           <Box component="form" onSubmit={handleCompleteSetup} sx={{ mt: 1, textAlign: 'center' }}>

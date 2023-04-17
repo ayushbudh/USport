@@ -28,8 +28,8 @@ const Create = ({props}) => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const selectedPlayers = useRef([]);
-    const startDateTime = useRef(dayjs('2023-03-4T21:11:54'));
-    const endDateTime = useRef(dayjs('2023-03-5T21:11:54'));
+    const startDateTime = useRef(dayjs(Date()));
+    const endDateTime = useRef(dayjs(Date()));
 
     const handleBackButtonClick = () =>{
         props.setCurrentPage(1);
@@ -118,7 +118,7 @@ const Create = ({props}) => {
                     width={400}/>
                 </Grid>
             </Grid>
-           <Grid item xs={3} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center',  mt: 2, ml: 55, mr: 5}}>
+           <Grid item xs={3} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center',  mt: 2, ml: 45, mr: 5}}>
                 <Typography variant="subtitle1" fontWeight={700}>Select Game Type</Typography>
                 <FormControl fullWidth>
                     <InputLabel id="gametype">Game Type</InputLabel>
@@ -182,7 +182,7 @@ const Create = ({props}) => {
                 />
             </LocalizationProvider>
            </Grid>
-            <Grid item xs={2} sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', mt: 2, ml: 97}}>
+            <Grid item xs={2} sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', mt: 2, ml: 69}}>
                 <Button fullWidth aria-label="Create button" variant="contained" color='secondary'
                 type="submit">Create</Button>            
             </Grid>

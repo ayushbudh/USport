@@ -62,13 +62,11 @@ export default function MyProfile(){
             <Typography variant="h5" >You will first need to set up your profile</Typography>
             <Button sx={{mt: 5}} variant='contained' color='secondary' onClick={()=>{navigate('/profilesetup')}} >Set up profile</Button>
         </Box>:<div className="MyProfile">
-            <h1 className="pHeader">
-                Profile
-            </h1>
+            <Typography variant="h4" sx={{fontWeight: 'bolder'}}>Profile</Typography>
             <div className="pfp">
                 <Avatar
                 src={"https://i.imgur.com/bPrNWLo.jpg"} alt=""
-                style={{ width: "250px", height: "250px" }}
+                style={{ width: "150px", height: "150px" }}
                 />
             </div>
 

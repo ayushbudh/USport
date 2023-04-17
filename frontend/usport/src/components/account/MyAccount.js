@@ -40,9 +40,7 @@ const MyAccount = () => {
         </Box>:
         <Grid container component="main" sx={{ height: '30vh' }}>
         <Grid container justifyContent="center" spacing={2}>
-            <Typography component="h1" variant="h5"
-        sx={{fontSize: 45,
-          fontWeight: 600}}>
+        <Typography variant="h4" sx={{fontWeight: 'bolder'}}>
           My Account
         </Typography>
         </Grid>
@@ -51,7 +49,7 @@ const MyAccount = () => {
             <Grid item mt={2}>
                 <Avatar
                     src={"https://i.imgur.com/bPrNWLo.jpg"} alt=""
-                    style={{ width: "250px", height: "250px" }}
+                    style={{ width: "150px", height: "150px" }}
                 />
             </Grid>
         </Grid>

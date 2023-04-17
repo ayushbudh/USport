@@ -166,15 +166,6 @@ const Signup = () => {
               <Typography  sx={{ textAlign: 'center'}}>OR</Typography>
                 <Box sx={{
                     display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                }}>
-                    <IconButton aria-label="Google Icon">
-                        <Avatar src={'https://i.imgur.com/g9TqmFu.png'} />
-                    </IconButton>
-                </Box>
-                <Box sx={{
-                    display: 'flex',
                     justifyContent: 'center',
                     }}>
                     <Typography  sx={{mr: 1}} variant="body2">Already have an account? </Typography>

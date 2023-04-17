@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Lead from "./listPeople";
 import './style.css';
 import Top from "./Top";
+import Typography from '@mui/material/Typography';
 
 
 export default function Board()
@@ -41,15 +42,9 @@ useEffect(() => {
     .catch(error => console.error('Error fetching user metric data:', error));
 }, []);
 
-
-
-
-
-
-
     return (
         <div className="board">
-            <h1 className="rank">Ranking</h1>
+            <Typography sx={{ fontWeight: 'bolder'}} variant="h4">Ranking</Typography>
             <Top></Top>
             <h1 className="leaderboard">Leaderboard</h1>
             <div className="table">

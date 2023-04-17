@@ -89,7 +89,7 @@ const Play = () => {
     }, []);
 
     const searchQueryFilter = (query) => {
-        fieldService.searField(query)
+        fieldService.searchField(query)
         .then((fields) => {
             fieldAddressService.getFieldAddresses()
             .then((fieldaddress) => {
@@ -153,20 +153,20 @@ const Play = () => {
             <Grid item xs={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <Box sx={{ backgroundColor: '#F8F4F4', p: 3, borderRadius: 5}}>
                 {loading ? 
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 300,
                         width: 500 }}>
                         <CircularProgress />
                         <Typography sx={{ ml: 2}}>Fetching fields...</Typography>
                     </Box>
                     :
                     fieldCount === 0 ? 
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 300,
                         width: 500 }}>
                         No Fields
                     </Box>
                     :
                     <FixedSizeList
-                        height={400}
+                        height={300}
                         width={500}
                         itemSize={80}
                         itemCount={fieldCount}
