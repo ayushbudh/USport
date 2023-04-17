@@ -28,8 +28,8 @@ const Create = ({props}) => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const selectedPlayers = useRef([]);
-    const startDateTime = useRef(dayjs(Date()));
-    const endDateTime = useRef(dayjs(Date()));
+    const [startDateTime, setStartDateTime] = useState(Date());
+    const [endDateTime, setEndDateTime] = useState(Date());
 
     const handleBackButtonClick = () =>{
         props.setCurrentPage(1);
@@ -44,8 +44,8 @@ const Create = ({props}) => {
         const requestBodyData = {
             gametype: formData.get('gametype'),
             players: selectedPlayers.current,
-            startDateTime: new Date(startDateTime.current['$d']).toISOString(),
-            endDateTime: new Date(endDateTime.current['$d']).toISOString(),
+            startDateTime: new Date(startDateTime['$d']).toISOString(),
+            endDateTime: new Date(endDateTime['$d']).toISOString(),
             fieldId: props.data['id']
         };
         const reservartionDateRange = "[" + requestBodyData.startDateTime + ", " + requestBodyData.endDateTime +"]" ;
@@ -165,8 +165,8 @@ const Create = ({props}) => {
                 <DateTimePicker
                     fullWidth
                     label="Date & Time picker"
-                    value={startDateTime.current}
-                    onChange={(value) => {startDateTime.current=value}}
+                    value={startDateTime}
+                    onChange={(value) => {setStartDateTime(value)}}
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>
@@ -176,8 +176,8 @@ const Create = ({props}) => {
             <LocalizationProvider dateAdapter={AdapterDayjs} >
                 <DateTimePicker
                     label="Date & Time picker"
-                    value={endDateTime.current}
-                    onChange={(value) => {endDateTime.current=value;}}
+                    value={endDateTime}
+                    onChange={(value) => {setEndDateTime(value)}}
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>
@@ -193,22 +193,3 @@ const Create = ({props}) => {
 }
 
 export default Create;
-
-
-
-// <Grid item xs={12} sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', mt: 2}}>
-// <>
-//     <Typography variant="subtitle1" fontWeight={700}>Select Date and Time</Typography>
-//     <LocalizationProvider dateAdapter={AdapterDayjs}>
-//         <DateTimePicker
-//             label="Date & Time picker"
-//             value={dateTime}
-//             onChange={handleDateTimeChange}
-//             renderInput={(params) => <TextField {...params} />}
-//         />
-//     </LocalizationProvider>
-// </>
-// <>
-
-// </>
-// </Grid>
