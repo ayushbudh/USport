@@ -53,13 +53,13 @@ const Landing = () => {
             <Grid item xs={5}>
                 <Typography variant="h4">Looking for someone to play a game ?</Typography>
                 <Typography variant="subtitle1">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                With USport, you can easily find someone to play a game with. Whether you're looking for a casual pickup game or a more competitive match, our platform connects you with other players who share your passion for sports.
                 </Typography>
             </Grid>
             <Grid item xs={5}>
                 <Typography variant="h4">Network with other players</Typography>
                 <Typography variant="subtitle1">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                Not only can you find fellow athletes to play with, but you can also network with other players to expand your social circle and build lasting friendships. Our platform creates a community of like-minded individuals who love to stay active and have fun.
                 </Typography>
             </Grid>
             <Grid item xs={4.5}>
@@ -89,7 +89,7 @@ const Landing = () => {
             <Grid item xs={5}>
                 <Typography variant="h4">Find trainers</Typography>
                 <Typography variant="subtitle1">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                In addition to connecting you with other players, USport also helps you find trainers who can help take your game to the next level. Our trainer directory allows you to search for coaches who specialize in your favorite sports and connect with them for personalized training sessions.
                 </Typography>
             </Grid>
         </Grid>

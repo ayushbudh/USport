@@ -1,6 +1,7 @@
 package com.app.usport.field;
 
 import com.app.usport.fieldaddress.FieldAddressService;
+import com.app.usport.user.UserAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,8 @@ public class FieldService {
 
     public Field getField(String id) {
         return fieldRepository.getField(id);
+    }
+    public List<Field> searchField(String query){
+        return fieldRepository.searchField(query);
     }
 }

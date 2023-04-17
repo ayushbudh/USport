@@ -11,7 +11,6 @@ import IconButton from '@mui/material/IconButton';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
-import { useNavigate } from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import { useAuth } from '../../contexts/AuthContext';
 import { CircularProgress } from '@mui/material';
@@ -27,7 +26,6 @@ const theme = createTheme({
 
 const Signin = () => {
 
-  const navigate = useNavigate();
   const [errormsg, setErrorMsg] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -40,7 +38,7 @@ const Signin = () => {
     try{
       await signInUser(formData.get('email'), formData.get('password'));
       setLoading(false);
-      navigate('/home');
+      
     }catch(error){
         const errorMessage = error.message;
         setLoading(false);
@@ -148,18 +146,6 @@ const Signin = () => {
                 Sign in
               </Button>
               <Typography  sx={{ textAlign: 'center'}}>OR</Typography>
-                <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                }}>
-                    <IconButton aria-label="Google Icon">
-                        <Avatar src={'https://i.imgur.com/g9TqmFu.png'} />
-                    </IconButton>
-                    <IconButton aria-label="Google Icon">
-                        <Avatar src={'https://i.imgur.com/HSnMjVr.png'} />
-                    </IconButton>
-                </Box>
                 <Box sx={{
                     display: 'flex',
                     justifyContent: 'center',

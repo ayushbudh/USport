@@ -27,6 +27,28 @@ public class UserMetricRepository {
         }
     }
 
+    public UserMetric createUserMetric(UserMetric userMetric){
+        // insert data
+        String sql = "INSERT INTO user_metric " +
+                "(user_id, rating, bio, levelofexpertise) " +
+                "VALUES " +
+                "(" + userMetric.getUserId() + ", " + userMetric.getRating()
+                + ", " + "\'" + userMetric.getBio().trim() +  "\'" +
+                ", \'" + userMetric.getLevelOfExperience().trim() + "\');";
+        try{
+            jdbcTemplate.update(sql);
+            return getUserMetric(String.valueOf(userMetric.getUserId()));
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
+    }
+
+    public List<UserMetric> getTopUserMetrics() {
+        String sql = "SELECT * FROM user_metric ORDER BY rating DESC LIMIT 15";
+        List<UserMetric> userMetrics = jdbcTemplate.query(sql, mapUserMetricFromDb());
+        return userMetrics;
+    }
+
     private RowMapper<UserMetric> mapUserMetricFromDb() {
         return (resultSet, i) -> {
             return new UserMetric(
@@ -38,4 +60,5 @@ public class UserMetricRepository {
             );
         };
     }
+
 }

@@ -24,4 +24,7 @@ public class SportService {
     public List<Sport> getSportsForField(String fieldId){
         return sportRepository.getSportsForField(fieldId);
     }
+    public List<Sport> getSportsForUserMetric(String userMetricId){
+        return sportRepository.getSportsForUserMetric(userMetricId);
+    }
 }

@@ -88,6 +88,46 @@ const Play = () => {
         })
     }, []);
 
+    const searchQueryFilter = (query) => {
+        fieldService.searchField(query)
+        .then((fields) => {
+            fieldAddressService.getFieldAddresses()
+            .then((fieldaddress) => {
+                const fa = fieldaddress.data;
+                fields.data.map((field) => {
+                    // TODO: Compare the performance of this with the SQL join query. 
+                    const result = fa.filter((f) => f['id'] === field['addressId']);
+                    if(result.length !== 0){
+                        field['address'] = result[0];
+                    }else{
+                        field['address'] = null;
+                    }
+
+                    sporService.getSportsForField(field.id)
+                    .then((sports) => {
+                        field['sports'] = sports.data;
+                    })
+                    .catch((error) => {
+                        setError(error);
+                    })
+                                                 
+                    return field;
+                });
+                setField(fields.data);
+                setFieldCount(fields.data.length);
+            })
+            .catch((error) => {
+                setError(error);
+            })
+        })
+        .catch((error) => {
+            setError(error);
+        })
+        .finally(() => {
+            setLoading(false);
+        })
+    }
+
     return(
         <Grid container p={4}>
             <Grid item xs={12} mb={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -106,26 +146,27 @@ const Play = () => {
                     sx={{ ml: 1, flex: 1 }}
                     placeholder="Search nearby play grounds..."
                     inputProps={{ 'aria-label': 'search nearby play grounds' }}
+                    onChange={(e) => searchQueryFilter(e.target.value)}
                 />
                 </Box>
             </Grid>
             <Grid item xs={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <Box sx={{ backgroundColor: '#F8F4F4', p: 3, borderRadius: 5}}>
                 {loading ? 
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 300,
                         width: 500 }}>
                         <CircularProgress />
                         <Typography sx={{ ml: 2}}>Fetching fields...</Typography>
                     </Box>
                     :
                     fieldCount === 0 ? 
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 400,
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  height: 300,
                         width: 500 }}>
                         No Fields
                     </Box>
                     :
                     <FixedSizeList
-                        height={400}
+                        height={300}
                         width={500}
                         itemSize={80}
                         itemCount={fieldCount}

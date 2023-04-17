@@ -6,15 +6,12 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
-export default function Lead({Leaderboard})
-{
+export default function Lead({ dataList }) {
   return (
     <div id="team">
-      <h3 className='t'>Team</h3>
       <div className='indB'>
-        {CheckboxListSecondary(Leaderboard)}
+        {CheckboxListSecondary(dataList)}
       </div>
-      
     </div>)
 }
 
@@ -25,17 +22,18 @@ function CheckboxListSecondary(somedata) {
         return (
           <ListItem
           key={n.id}
+          sx={{ width: '360px'}}
           >
-            <ListItemButton> 
+            <ListItemButton>
               <ListItemAvatar>
                 <Avatar
                   src={n.img} alt=""
                 />
               </ListItemAvatar>
-              <ListItemText  primary={n.name}/> 
-            <div className='Score'>
-                <ListItemText  primary={n.score}/>
-            </div>
+              <ListItemText primary={n.name} />
+              <div className='Score'>
+                <ListItemText primaryTypographyProps={{align: 'left'}} primary={`Score: ${n.rating}`} />
+              </div>
             </ListItemButton>
           </ListItem>
         );
@@ -43,3 +41,4 @@ function CheckboxListSecondary(somedata) {
     </List>
   );
 }
+

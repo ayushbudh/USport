@@ -91,10 +91,10 @@ const Connect = () => {
             </Grid>
             <Grid item xs={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <Box sx={{ backgroundColor: '#F8F4F4', p: 5, borderRadius: 5}}>
-                        {userCount === 0 ? <Box height={300}
+                        {userCount === 0 ? <Box height={270}
                         width={500} sx={{ textAlign: 'center'}} >No Users Found!</Box>:
                         <FixedSizeList
-                        height={300}
+                        height={270}
                         width={500}
                         itemSize={56}
                         itemCount={userCount}

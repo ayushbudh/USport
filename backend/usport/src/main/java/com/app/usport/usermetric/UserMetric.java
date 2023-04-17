@@ -1,5 +1,7 @@
 package com.app.usport.usermetric;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserMetric {
     private int id;
     private int userId;
@@ -7,7 +9,11 @@ public class UserMetric {
     private String bio;
     private String levelOfExperience;
 
-    public UserMetric(int id, int userId, int rating, String bio, String levelOfExperience) {
+    public UserMetric(int id,
+                      @JsonProperty("user_id") int userId,
+                      @JsonProperty("rating") int rating,
+                      @JsonProperty("bio") String bio,
+                      @JsonProperty("level_of_expertise") String levelOfExperience) {
         this.id = id;
         this.userId = userId;
         this.rating = rating;

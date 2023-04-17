@@ -10,7 +10,7 @@ class UserAccountService{
         return axios.get('http://localhost:8080/api/user/search?query=' + query);
     }
 
-    getUserId(uid){
+    getUser(uid){
         return axios.get('http://localhost:8080/api/user/' + uid);
     }
 

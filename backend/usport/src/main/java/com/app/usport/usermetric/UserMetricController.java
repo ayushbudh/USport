@@ -18,4 +18,14 @@ public class UserMetricController {
     public UserMetric getUserMetric(@PathVariable("userId") String userId){
         return userMetricService.getUserMetric(userId);
     }
+
+    @PostMapping("/create")
+    public UserMetric add(@RequestBody UserMetric userMetric){
+        return userMetricService.createUserMetric(userMetric);
+    }
+
+    @GetMapping
+    public List<UserMetric> getTopUserMetrics() {
+        return userMetricService.getTopUserMetrics();
+    }
 }

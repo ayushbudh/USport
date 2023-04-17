@@ -60,10 +60,9 @@ const Signup = () => {
     }
   };
 
-
   return (
-    <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+    <ThemeProvider theme={theme}> 
+        <Grid container component="main" sx={{ height: '100vh' }}>
         <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
         <Box sx={{
               my: 3,
@@ -165,18 +164,6 @@ const Signup = () => {
                 Sign Up
               </Button>
               <Typography  sx={{ textAlign: 'center'}}>OR</Typography>
-                <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                }}>
-                    <IconButton aria-label="Google Icon">
-                        <Avatar src={'https://i.imgur.com/g9TqmFu.png'} />
-                    </IconButton>
-                    <IconButton aria-label="Google Icon">
-                        <Avatar src={'https://i.imgur.com/HSnMjVr.png'} />
-                    </IconButton>
-                </Box>
                 <Box sx={{
                     display: 'flex',
                     justifyContent: 'center',

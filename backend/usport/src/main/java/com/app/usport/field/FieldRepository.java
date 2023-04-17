@@ -1,6 +1,7 @@
 package com.app.usport.field;
 
 import com.app.usport.exception.ApiRequestException;
+import com.app.usport.user.UserAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -58,6 +59,21 @@ public class FieldRepository {
             String sql = "SELECT * FROM field WHERE id=" + String.valueOf(id);
             List<Field> result = jdbcTemplate.query(sql, mapFieldWithDB());
             return result.get(0);
+        }catch (Exception e){
+            throw new ApiRequestException(e.toString());
+        }
+    }
+
+    List<Field> searchField(String query){
+        try{
+            query = query.trim();
+            if(query.length() == 0) return getAllFields();
+            StringBuilder pattern = new StringBuilder();
+            pattern.append(query.substring(0,1).toUpperCase());
+            pattern.append(query.substring(1).toLowerCase());
+            String sql = "SELECT * FROM field WHERE name LIKE '%" + pattern + "%';";
+            List<Field> result = jdbcTemplate.query(sql, mapFieldWithDB());
+            return result;
         }catch (Exception e){
             throw new ApiRequestException(e.toString());
         }
